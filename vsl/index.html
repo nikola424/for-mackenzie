@@ -1,403 +1,762 @@
-<!doctype html>
-<html lang="en" data-variant="qualify-v2">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Free Training · Mackenzie Whelan</title>
-<meta name="robots" content="noindex"/>
-<link rel="icon" href="../assets/img/favicon.png" type="image/png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=DM+Serif+Display&display=swap">
-<style>
-@font-face{font-family:"DM Sans Fallback";src:local("Arial"),local("ArialMT");size-adjust:104.53%;ascent-override:94.9%;descent-override:29.66%;line-gap-override:0%}
-:root{
-  --ground:#f9f6f1;--surface:#fff;--surface-2:#f4efe7;
-  --ink:#221e1b;--body:#4a4541;--muted:#6b645d;--faint:#8b847c;
-  --line:#ebe4da;--line-2:#d9d0c4;
-  --red:#a35a43;--red-2:#b9694f;--tint:#fbf0ea;--red-disc:#f8e7de;
-  --green:#1f8a4c;--green-ink:#17703d;--green-disc:#e6f4ea;--green-tint:#eef7f1;
-  --blush:#f7efe9;
-  --sh-1:0 1px 2px rgba(40,28,18,.05),0 3px 10px -4px rgba(40,28,18,.07);
-  --sh-2:0 1px 2px rgba(40,28,18,.04),0 24px 60px -24px rgba(40,28,18,.22);
-  --f:"DM Sans","DM Sans Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>See If You Qualify &middot; Mackenzie Whelan</title>
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Working moms on Mackenzie Whelan&rsquo;s team are making $15K&ndash;$50K in commissions from home. Watch the video and see if you qualify." />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{
+      canvas:'#F7F1EA',surface:'#F1E7DC',border:'#EADFD4',
+      ink:'#2B221C',muted:'#5A4A40',faint:'#8A786C',
+      gold:'#B26A50','gold-l':'#C98670',dark:'#241B16'
+    }}}}
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+  <style>
+  
+    *,*::before,*::after{box-sizing:border-box}
+    html{overflow-x:clip;overscroll-behavior:none}
+    body{font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#fff}
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+    .rv.in{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+    @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    .h1{animation:up .7s cubic-bezier(.16,1,.3,1) .05s both}
+    .h2{animation:up .7s cubic-bezier(.16,1,.3,1) .18s both}
+    .h3{animation:up .7s cubic-bezier(.16,1,.3,1) .3s both}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;border-radius:4px;border:none;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:transform .2s ease,box-shadow .2s ease,background .15s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:scale(.98)}
+    @keyframes goldGlow{0%,100%{box-shadow:0 4px 18px -4px rgba(178,106,80,.4)}50%{box-shadow:0 4px 26px -2px rgba(178,106,80,.65),0 0 10px rgba(178,106,80,.18)}}
+    @keyframes darkGlow{0%,100%{box-shadow:0 4px 18px -4px rgba(43,34,28,.55)}50%{box-shadow:0 6px 24px -3px rgba(43,34,28,.7),0 0 0 1px rgba(178,106,80,.12)}}
+    .btn-gold{background:#B26A50;color:#fff;padding:1rem 2.25rem;font-size:1.0625rem;box-shadow:0 4px 18px -4px rgba(178,106,80,.4);animation:goldGlow 2.8s ease-in-out .15s infinite}
+    .btn-gold:hover{background:#D49A45;animation:none}
+    .btn-dark{background:#2B221C;color:#F7F1EA;padding:1rem 2.25rem;font-size:1.0625rem;animation:darkGlow 2.8s ease-in-out .5s infinite}
+    .btn-dark:hover{animation:none}
+    .vsl-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:124px;height:76px;border-radius:0;background:rgba(178,106,80,.55);display:flex;align-items:center;justify-content:center;transition:background .15s ease}
+    #vsl-thumb:hover .vsl-play-btn{background:rgba(178,106,80,.85)}
+    .btn-sm{padding:.75rem 1.5rem !important;font-size:.9375rem !important}
+    @media(max-width:767px){.btn-gold,.btn-dark{font-size:.9375rem;padding:.875rem 1.375rem}.text-center .btn-dark,.text-center .btn-gold{display:flex;margin-left:auto;margin-right:auto;width:fit-content;max-width:calc(100vw - 2.5rem)}}
+    .ey{font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#B26A50}
+    .tcard{position:relative;overflow:hidden;cursor:pointer;border-radius:12px;border:1px solid rgba(0,0,0,.1);min-height:210px;background:#241B16;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;width:100%;padding:0;transition:border-color .25s,transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s;font-family:'DM Sans',sans-serif}
+    .tcard:hover{border-color:rgba(178,106,80,.45);transform:translateY(-3px);box-shadow:0 16px 48px -12px rgba(0,0,0,.35)}
+    .tcard:active{transform:scale(.98)}
+    .tcard-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.2) 100%)}
+    .tcard-body{position:relative;z-index:2;padding:1.125rem 1.125rem 1rem}
+    .tcard-quote{font-size:.9375rem;font-weight:700;color:#F7F1EA;line-height:1.45;margin-bottom:.5rem}
+    .tcard-caption{font-size:.6875rem;color:rgba(178,106,80,.75);font-weight:600;margin-bottom:.625rem;line-height:1.4}
+    .tcard-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .tcard-name{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B26A50}
+    .tcard-play{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:rgba(178,106,80,.15);border:1px solid rgba(178,106,80,.35);display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+    .tcard:hover .tcard-play{background:rgba(178,106,80,.28);border-color:rgba(178,106,80,.65)}
+    .lb-wrap{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:60px 16px 16px;background:rgba(0,0,0,.93);animation:lb-ready 350ms forwards}
+    button{-webkit-tap-highlight-color:transparent;}
+    @keyframes lb-ready{from{pointer-events:none}to{pointer-events:auto}}
+    .lb-wrap>*{pointer-events:auto}
+    .lb-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .lb-close:hover{background:rgba(255,255,255,.22)}
+    .lb-spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.15);border-top-color:rgba(178,106,80,.8);border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .logo-track{display:flex;align-items:center;width:max-content;animation:logoScroll 36s linear infinite}
+    .logo-track:hover{animation-play-state:paused}
+    .carousel-logo{height:32px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1) opacity(.55);margin:0 2.5rem;transition:filter .2s}
+    .carousel-logo:hover{filter:grayscale(.3) opacity(.8)}
+    @media(max-width:640px){.carousel-logo{height:22px;max-width:80px;margin:0 1.125rem}.lf{width:36px}}
+    @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .lf{position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
+    .lf-l{left:0;background:linear-gradient(to right,#ffffff 0%,transparent 100%)}
+    .lf-r{right:0;background:linear-gradient(to left,#ffffff 0%,transparent 100%)}
+    .lb-vid{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px}
+    .lb-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+    .lb-vid sws-video{position:absolute;inset:0;width:100%;height:100%}
+    .cs-modal-inner{max-height:84vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.15) transparent;padding-bottom:3.5rem !important}
+    .apply-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+    .apply-overlay.cal-mode{align-items:flex-start;padding-top:24px;padding-bottom:24px}
+    .apply-modal{width:100%;max-width:640px;max-height:96vh;border-radius:20px;background:#fff;position:relative;margin:auto;overflow-y:auto;min-height:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+    .apply-modal.cal-mode{max-width:900px;max-height:none;overflow-y:visible}
+    .qtile{border:2px solid #CDBFB3;border-radius:12px;padding:1.375rem 1.25rem;font-size:1rem;font-weight:600;line-height:1.45;cursor:pointer;background:#F9F8F6;color:#2B221C;transition:border-color .15s,background .15s,color .15s;font-family:'DM Sans',sans-serif;text-align:left;width:100%;box-sizing:border-box}
+    .qtile-con{padding:1rem;font-size:.9375rem;line-height:1.4;border-radius:10px}
+    @media(max-width:767px){.apply-modal>div{padding:1.125rem 1rem .875rem !important}.qtile-con{padding:.5625rem .6875rem;font-size:1rem;line-height:1.35;border-radius:9px}.con-grid{gap:.5rem !important}.apply-modal h3{font-size:1.0625rem !important;margin-bottom:.8125rem !important}}
+    .cal-slot{padding:.6875rem .25rem;border-radius:8px;font-size:.8125rem;font-weight:600;cursor:pointer;transition:background .12s,border-color .12s,color .12s;font-family:'DM Sans',sans-serif;text-align:center;min-height:44px;line-height:1.25;border:1.5px solid #D5D0CA;background:#fff;color:#2B221C;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+    .cal-slot:hover:not(:disabled){background:#FBEFE8;border-color:#B26A50;color:#2B221C;}
+    .cal-slot:active:not(:disabled){background:#B26A50;border-color:#B26A50;color:#fff;transform:scale(.97);}
+    .cal-slot:disabled{cursor:default;opacity:.6;}
+    .cal-day-tab:hover{border:2px solid #B26A50 !important;background:#FBEFE8 !important;}
+    @media(hover:none){.cal-slot:hover:not(:disabled){background:#fff;border-color:#D5D0CA;color:#2B221C;}.cal-day-tab:hover:not(.cal-day-sel){border:1.5px solid #D5D0CA !important;background:#fff !important;}}
+    @media(max-width:400px){.cal-slot{font-size:.75rem;padding:.625rem .125rem;}.cal-time-grid{grid-template-columns:repeat(2,1fr)!important;}}
+    @keyframes cal-bdots{to{width:1em;}}
+    .cal-booking-anim::after{content:'...';display:inline-block;overflow:hidden;width:0;vertical-align:bottom;animation:cal-bdots 1s steps(3,end) infinite;}
+    .cal-tz-item{display:block;padding:.32rem 1rem;cursor:pointer;font-size:.75rem;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#2A2622;font-weight:400;}
+    .cal-tz-item:hover{background:#F2EFE9;}
+    .qtile:hover,.qtile.sel{border-color:#B26A50;background:#FBEFE8;color:#B26A50}
+    .qtile-lg{padding:1.375rem 1.5rem;font-size:1.0625rem}
+    /* SWS-themed intl-tel-input (matches apply modal / form chrome) */
+    .iti{
+      width:100%;
+      --iti-border-gray:#EADFD4;
+      --iti-border-color:#EADFD4;
+      --iti-text-gray:#8A786C;
+      --iti-dialcode-color:#5A4A40;
+      --iti-hover-color:#FBEFE8;
+      --iti-dropdown-bg:#fff;
+      --iti-arrow-color:#8A786C;
+    }
+    .iti__tel-input{
+      width:100%;
+      border:2px solid #EADFD4;
+      border-radius:8px;
+      padding-top:.875rem;
+      padding-bottom:.875rem;
+      padding-right:1rem;
+      font-size:1rem;
+      font-family:'DM Sans',sans-serif;
+      color:#2B221C;
+      background:#fff;
+      outline:none;
+      transition:border-color .2s;
+      box-sizing:border-box;
+    }
+    .iti__tel-input:focus{border-color:#B26A50}
+    .iti__tel-input.input-error{border-color:#E53E3E}
+    .iti__selected-country{
+      border-radius:6px 0 0 6px;
+    }
+    .iti__selected-country-primary{
+      padding:0 .55rem 0 .7rem;
+      gap:2px;
+      border-right:1.5px solid #EADFD4;
+      transition:background .15s;
+    }
+    .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country-primary:hover,
+    .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country:has(+ .iti__dropdown-content:hover) .iti__selected-country-primary{
+      background:#FBEFE8;
+    }
+    .iti__selected-dial-code{
+      font-size:.875rem;
+      font-weight:600;
+      font-family:'DM Sans',sans-serif;
+      color:#2B221C;
+      margin-left:6px !important;
+    }
+    .iti__arrow{
+      border-top-color:#A39286;
+      opacity:.9;
+    }
+    .iti__arrow--up{border-bottom-color:#B26A50}
+    /* Country code uses the phone's native picker — reliable, no layout jump */
+    .iti--sws-picker .iti__country-container{pointer-events:none}
+    .phone-field{position:relative}
+    .phone-field .sws-country-select{
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      width:86px;
+      opacity:0;
+      z-index:3;
+      border:none;
+      background:transparent;
+      font-size:16px;
+      -webkit-appearance:none;
+      appearance:none;
+    }
+    .form-next{font-size:.9375rem;font-weight:800;color:#2B221C;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:opacity .15s;padding:0;line-height:1.4}
+    .form-next:disabled{opacity:.3;cursor:not-allowed}
+    .form-input{width:100%;border:2px solid #CDBFB3;border-radius:8px;padding:.875rem 1rem;font-size:1rem;font-family:'DM Sans',sans-serif;color:#2B221C;background:#fff;outline:none;transition:border-color .2s;box-sizing:border-box}
+    .form-input:focus{border-color:#B26A50}
+    .form-input.input-error{border-color:#E53E3E}
+    .slack-grid{columns:2;column-gap:6px}
+    @media(min-width:1024px){.slack-grid{columns:3}}
+    @media(max-width:767px){.slack-grid{columns:1}}
+    .slack-win{width:100%;height:auto;border-radius:10px;margin-bottom:6px;break-inside:avoid;display:block;border:1px solid rgba(0,0,0,.08);cursor:pointer;}
+    @media(max-width:767px){
+      .cs-modal-inner{padding:1.25rem 1.25rem 7rem 1.25rem !important}
+      .lb-wrap{padding:60px 10px 10px !important}
+      .hero-badge-text{font-size:.8rem !important;letter-spacing:0 !important;line-height:1.35}
+      .badge-nl{display:block;text-align:center}
+      .hero-h1{font-size:clamp(1.375rem,5.5vw,2rem) !important;text-wrap:balance}.hero-guar{font-size:.78rem !important}
+      .proof-strip{gap:.6rem !important;flex-wrap:nowrap !important}
+      .proof-strip .proof-num{font-size:1rem !important}
+      .proof-strip .proof-lbl{font-size:.58rem !important}
+      .proof-strip .proof-div{height:22px !important}
+      .slack-grid{columns:1 !important}
 }
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--body);font:400 17px/1.5 var(--f);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-[hidden]{display:none!important}
-img{display:block;max-width:100%;height:auto}
-h1,h2,p,ul,ol,figure,blockquote,fieldset{margin:0}
-ul,ol{padding:0;list-style:none}
-fieldset{border:0;padding:0;min-width:0}
-a{color:inherit}
-button,input{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-[tabindex="-1"]:focus{outline:none}
-b,strong{font-weight:700;color:var(--ink)}
-.nw{white-space:nowrap}
+    .apply-back{
+      display:inline-flex;
+      flex-direction:row;
+      align-items:center;
+      gap:4px;
+      white-space:nowrap;
+      background:none;
+      border:none;
+      cursor:pointer;
+      font-size:.875rem;
+      font-weight:600;
+      color:#8A786C;
+      font-family:'DM Sans',sans-serif;
+      padding:0;
+      line-height:1;
+    }
+    .apply-back svg{flex-shrink:0;display:block}
+    .apply-nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      margin-top:1.25rem;
+      padding-top:.875rem;
+      border-top:1px solid #F1E6DC;
+      min-height:44px;
+    }
+    .apply-nav .form-next{margin-left:auto}
+    .apply-progress{
+      margin-bottom:1.75rem;
+      padding-top:.35rem;
+      /* Stop short of the absolute close (X) button */
+      padding-right:calc(32px + .875rem + .5rem);
+    }
+    @media(max-width:767px){
+      .apply-nav{
+        margin-top:1rem;
+        padding-top:.75rem;
+      }
+      .apply-back{
+        min-height:44px;
+        padding:.5rem .25rem .5rem 0;
+      }
+      .apply-progress{margin-bottom:1.25rem}
+      .apply-overlay:not(.cal-mode){
+        align-items:center;
+        padding-top:max(12px,env(safe-area-inset-top,0px));
+        padding-bottom:max(12px,env(safe-area-inset-bottom,0px));
+      }
+      .apply-modal:not(.cal-mode){
+        max-height:calc(100dvh - max(12px,env(safe-area-inset-top,0px)) - max(12px,env(safe-area-inset-bottom,0px)) - 24px);
+      }
+    }
+    /* Narrow phones only — hero type, not popup chrome */
+    @media(max-width:430px){
+      .hero-h1{font-size:1.32rem !important}
+    }
+    [x-cloak]{display:none !important}
+    .cs-card::after{content:'See the screenshot \2192';display:block;font-size:.6875rem;font-weight:700;color:rgba(178,106,80,.5);margin-top:.875rem;letter-spacing:.03em;font-family:'DM Sans',sans-serif;transition:color .2s}
+    .cs-card:hover::after{color:#B26A50}
+    .mob-br{display:none}
+    @media(max-width:767px){.mob-br{display:block}}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#B26A50;border-radius:2px}
+    /* Desktop sticky mini player */
+    #hero-video-sticky-wrap{position:relative;}
+    #hero-video-sticky-wrap.sticky-vid{position:fixed !important;top:20px;right:20px;width:375px;max-width:375px;margin:0 !important;z-index:902;}
+    #hero-video-sticky-wrap.sticky-vid .sticky-vid-inner{border-radius:12px;overflow:hidden;box-shadow:0 12px 40px -6px rgba(0,0,0,.55) !important;}
+    .sticky-vid-close{display:none;position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;background:#2B221C;border:2px solid #fff;cursor:pointer;z-index:903;align-items:center;justify-content:center;color:#fff;padding:0;transition:background .15s;flex-shrink:0;}
+    .sticky-vid-close:hover{background:#3a3834;}
+    #hero-video-sticky-wrap.sticky-vid .sticky-vid-close{display:flex;}
+    @media(max-width:767px){#hero-video-sticky-wrap.sticky-vid{width:210px;max-width:210px;top:16px;right:16px;}}
+    .gb{white-space:nowrap}
+    span:has(> .gb){text-align:center}
+  
 
-/* ---------- layout ---------- */
-.shell{max-width:560px;margin:0 auto;padding:0 20px;min-height:100vh;min-height:100svh}
-.app{min-width:0}
-.aside{display:none}
-
-/* ---------- top bar ---------- */
-.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:58px}
-.back{grid-area:1/1;justify-self:start;display:inline-flex;align-items:center;gap:2px;min-height:44px;margin-left:-8px;padding:0 12px 0 4px;border:0;border-radius:12px;background:none;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer}
-.back svg{width:22px;height:22px}
-.logo{grid-area:1/2;width:92px;height:auto}
-.count{grid-area:1/3;justify-self:end;font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.prog{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
-.prog i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--red),var(--red-2));transition:width .45s cubic-bezier(.2,.7,.2,1)}
-
-/* ---------- buttons ---------- */
-.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:14px 26px;border:0;border-radius:999px;background:linear-gradient(180deg,var(--red),var(--red-2));color:#fff;font-size:18px;font-weight:700;line-height:1.2;letter-spacing:-.005em;text-align:center;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.26),inset 0 1px 0 rgba(255,255,255,.22),0 14px 28px -12px rgba(163,90,67,.6),0 2px 4px rgba(163,90,67,.16);transition:transform .15s,filter .15s}
-.btn *{pointer-events:none}
-.btn svg{flex:none;width:20px;height:20px;transition:transform .2s}
-.btn .stack{display:flex;flex-direction:column;align-items:center;gap:3px}
-.btn .sm{font-size:13px;line-height:1.2;font-weight:500;letter-spacing:0;opacity:.88}
-.btn-2{min-height:68px;padding-top:12px;padding-bottom:12px}
-@media (hover:hover){.btn:hover{filter:brightness(1.07)}.btn:hover svg{transform:translateX(3px)}}
-.btn:active{transform:translateY(1px)}
-.submit-button[aria-busy="true"]{cursor:progress}
-.submit-button[data-label]>*{opacity:0}
-.submit-button[data-label]::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.submit-button[aria-busy="true"]::before{content:"";position:absolute;left:24px;top:50%;width:18px;height:18px;margin-top:-9px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;pointer-events:none}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ---------- intro ---------- */
-.intro{padding:14px 0 0}
-.host{display:flex;align-items:center;gap:12px}
-.host img,.seat img{flex:none;width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 3px 10px rgba(40,28,18,.16)}
-.host-k{font-size:14px;line-height:1.3;color:var(--muted);font-weight:500}
-.host-k b{font-weight:700;color:var(--red)}
-.host-d{font-size:15px;line-height:1.35;color:var(--ink);font-weight:700;letter-spacing:-.005em}
-h1{margin-top:22px;font-size:clamp(32px,9.1vw,40px);line-height:1.06;letter-spacing:-.025em;font-weight:700;color:var(--ink);text-wrap:balance}
-h1 .q{display:block;margin-top:.14em;color:var(--red)}
-.lede{margin-top:14px;font-size:17px;line-height:1.5;text-wrap:pretty}
-.cta{margin-top:26px}
-.trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px}
-.faces{flex:none;width:121px;height:32px}
-.trust-t{font-size:13px;line-height:1.25;color:var(--muted)}
-.trust-t b{display:block;font-size:14px}
-.trust-sep{flex:none;width:1px;height:28px;background:var(--line-2)}
-.tp{flex:none;width:74px;height:auto}
-
-/* below the intro fold */
-.more{display:grid;gap:12px;margin-top:48px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px 20px;box-shadow:var(--sh-1)}
-.card-blush{background:var(--blush);border-color:#eddfd4}
-.card h2,.sec-h{font-size:23px;line-height:1.18;letter-spacing:-.022em;font-weight:700;color:var(--ink);text-wrap:balance}
-.card>p{margin-top:8px;font-size:16px}
-.kick{margin:0 0 8px;font-size:12px;line-height:1.2;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chips li{padding:7px 12px;border-radius:99px;background:var(--surface-2);font-size:14px;font-weight:600;color:var(--ink)}
-.card-blush .chips li{background:#fff}
-/* check / cross icons: one inline sprite, the disc is the svg box */
-.ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--green-disc);color:var(--green)}
-.ic-no{background:var(--red-disc);color:var(--red)}
-.ic-solid{background:var(--green);color:#fff}
-.ticks{display:grid;gap:11px;margin-top:18px}
-.ticks li{display:flex;align-items:flex-start;gap:10px;font-size:16px;line-height:1.45;font-weight:600;color:var(--ink)}
-.ticks .ic{margin-top:1px}
-.ticks-sep{margin-top:20px;padding-top:18px;border-top:1px solid rgba(40,28,18,.09)}
-.learn li{font-weight:500}
-.how{counter-reset:s;display:grid;gap:16px;margin-top:18px}
-.how li{display:grid;grid-template-columns:32px 1fr;gap:14px;font-size:16px;line-height:1.45}
-.how li::before{counter-increment:s;content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--surface-2);color:var(--ink);font-size:15px;font-weight:700;display:grid;place-items:center}
-.how b{display:block;margin-bottom:1px}
-.card>.bonus{margin-top:18px;padding:14px 16px;border-radius:14px;background:var(--tint);border:1px solid #efd6c8;font-size:15px;line-height:1.45}
-.sec-h{margin:28px 4px 2px}
-.t{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--sh-1)}
-.stars{display:flex;gap:2px}
-.stars i{width:16px;height:16px;background:#00b67a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.6l1.6 3.4 3.7.4-2.8 2.5.8 3.7L8 10.7l-3.3 1.9.8-3.7-2.8-2.5 3.7-.4z' fill='%23fff'/%3E%3C/svg%3E") center/14px no-repeat}
-.t blockquote{margin-top:10px;font-size:16px;line-height:1.5;color:var(--ink)}
-.t figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
-.again{margin-top:24px}
-.again-note{margin-top:12px;text-align:center;font-size:14px;color:var(--muted)}
-
-/* ---------- questions ---------- */
-.q-head{padding:26px 0 18px}
-.q-title,.r-title{font-size:clamp(26px,7.4vw,32px);line-height:1.12;letter-spacing:-.027em;font-weight:700;color:var(--ink);text-wrap:balance}
-.q-hint{margin-top:8px;font-size:16px;line-height:1.45;color:var(--muted);text-wrap:pretty}
-.opts{display:grid;gap:10px}
-.opt{position:relative;display:block;cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
-.opt input{position:absolute;top:50%;left:50%;width:1px;height:1px;margin:0;opacity:0;font-size:16px;pointer-events:none}
-.opt-card{display:flex;align-items:center;gap:14px;min-height:66px;padding:11px 16px 11px 12px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--sh-1);transition:border-color .15s,background-color .15s,transform .15s}
-.opt-ico{flex:none;width:42px;height:42px;border-radius:13px;background:var(--surface-2);display:grid;place-items:center;font-size:21px;line-height:1}
-.opt-txt{flex:1;min-width:0;font-size:17px;line-height:1.3;font-weight:600;color:var(--ink)}
-.opt-dot{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center;transition:background-color .15s,border-color .15s}
-.opt-dot::after{content:"";width:10px;height:5px;margin-top:-2px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) scale(0);transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
-.opt input:checked+.opt-card{border-color:var(--red);background:var(--tint)}
-.opt input:checked+.opt-card .opt-ico{background:#fff}
-.opt input:checked+.opt-card .opt-dot{border-color:var(--red);background:var(--red)}
-.opt input:checked+.opt-card .opt-dot::after{transform:rotate(-45deg) scale(1)}
-.opt input:focus-visible+.opt-card{outline:3px solid var(--ink);outline-offset:2px}
-@media (hover:hover){.opt:hover .opt-card{border-color:var(--line-2)}.opt:hover input:checked+.opt-card{border-color:var(--red)}}
-.opt:active .opt-card{transform:scale(.985)}
-
-/* ---------- result + form ---------- */
-.r-head{margin-top:14px;padding:18px 18px 20px;border-radius:20px;background:var(--green-tint);border:1.5px dashed var(--green)}
-.kick-ok{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:var(--green-ink)}
-.kick-ok .ic{width:20px;height:20px}
-.r-title{font-size:clamp(26px,7.2vw,30px)}
-.r-line{margin-top:8px;font-size:17px;line-height:1.4;font-weight:600;color:var(--ink);text-wrap:pretty}
-.r-how{margin-top:4px;font-size:16px;line-height:1.45;text-wrap:pretty}
-.seat{display:flex;align-items:center;gap:12px;margin-top:14px}
-.seat img{width:38px;height:38px}
-.seat-h{font-size:17px;line-height:1.25;font-weight:700;color:var(--ink)}
-.seat-d{font-size:14px;line-height:1.35;color:var(--muted)}
-.fields{display:grid;gap:8px;margin-top:12px}
-.field{position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;box-shadow:var(--sh-1);transition:border-color .15s,box-shadow .15s}
-.field:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(34,30,27,.08)}
-.field:has([aria-invalid="true"]){border-color:var(--red)}
-.field input{display:block;width:100%;height:56px;margin:0;padding:21px 16px 4px;border:0;border-radius:15px;outline:0;background:transparent;font-size:17px;line-height:1.3;font-weight:500;color:var(--ink);-webkit-appearance:none;appearance:none}
-.field label{position:absolute;left:17px;top:16px;font-size:17px;line-height:1.3;font-weight:500;color:var(--muted);pointer-events:none;transform-origin:0 0;transition:transform .16s ease}
-.field input:focus~label,.field input:not(:placeholder-shown)~label,.field input:-webkit-autofill~label{transform:translateY(-9px) scale(.75)}
-.field input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--surface) inset;-webkit-text-fill-color:var(--ink)}
-.hlc-field-error{margin:-2px 16px 9px;font-size:14px;font-weight:600;color:var(--red)}
-.consents{display:grid;gap:8px;margin-top:12px}
-.consent{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:12px;line-height:1.42;color:var(--muted);cursor:pointer}
-.consent input{-webkit-appearance:none;appearance:none;display:grid;place-content:center;width:20px;height:20px;margin:1px 0 0;border:1.5px solid var(--line-2);border-radius:6px;background:var(--surface);cursor:pointer}
-.consent input::before{content:"";width:9px;height:5px;margin-top:-2px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) scale(0)}
-.consent input:checked{border-color:var(--red);background:var(--red)}
-.consent input:checked::before{transform:rotate(-45deg) scale(1)}
-.legal{margin-top:8px;font-size:12px;line-height:1.45;color:var(--muted)}
-.legal a{color:var(--ink);font-weight:600}
-.submit{margin-top:12px}
-.submit .btn{min-height:58px}
-.r-bonus{margin-top:12px;font-size:14px;line-height:1.4;text-align:center;color:var(--muted);text-wrap:balance}
-.r-t{margin-top:28px}
-
-/* ---------- footer ---------- */
-.foot{max-width:560px;margin:56px auto 0;padding:28px 20px 44px;border-top:1px solid var(--line);font-size:12px;line-height:1.55;color:var(--muted)}
-.foot p+p{margin-top:10px}
-.foot .meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:18px}
-.foot .meta span{flex-basis:100%}
-.foot a{color:var(--ink)}
-
-/* ---------- step mode (JS) ---------- */
-.qz .step{display:none}
-.qz .step.is-current{display:block}
-html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;border-top:1px solid var(--line)}
-@media (prefers-reduced-motion:no-preference){
-  .qz-go .step.is-current{animation:stepIn .36s cubic-bezier(.2,.7,.2,1) both}
-  .qz-go[data-dir="back"] .step.is-current{animation-name:stepBack}
-}
-@keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes stepBack{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
-
-/* ---------- narrow phones ---------- */
-@media (max-width:374px){
-  .shell{padding:0 16px}
-  .host-d{font-size:14px}
-  .faces{width:106px;height:28px}
-  .trust{gap:10px}
-  .opt-card{gap:12px;padding-right:12px}
-  .opt-txt{font-size:16px}
-}
-
-/* ---------- desktop ---------- */
-@media (min-width:1024px){
-  .shell{max-width:1120px;display:grid;grid-template-columns:minmax(0,600px) 420px;gap:64px;justify-content:center;align-items:start;padding:40px 32px 0}
-  .app{--surface:#faf7f2;--surface-2:#f1ebe2;--line:#ece5db;background:#fff;border-radius:30px;padding:16px 52px 48px;box-shadow:var(--sh-2)}
-  .app .card,.app .t,.app .opt-card,.app .field{box-shadow:none}
-  .opt input:checked+.opt-card .opt-ico{background:#fff}
-  .bar{height:68px}
-  .logo{width:112px}
-  .intro{padding-top:22px}
-  h1{margin-top:26px;font-size:50px;line-height:1.05;letter-spacing:-.024em}
-  .lede{font-size:19px;max-width:30em}
-  .cta{margin-top:30px}
-  .trust{justify-content:flex-start;gap:14px;margin-top:22px}
-  .faces{width:136px;height:36px}
-  .tp{width:84px}
-  .trust-t{font-size:14px}.trust-t b{font-size:15px}
-  .more{margin-top:44px}
-  .card{padding:28px}
-  .q-head{padding:34px 0 22px}
-  .q-title,.r-title{font-size:36px}
-  .ticks{gap:12px}
-  .r-head{margin-top:20px;padding:22px 24px 24px}
-  .opt-card{min-height:70px}
-  .aside{display:block;position:sticky;top:40px}
-  .photo{position:relative;border-radius:30px;overflow:hidden;aspect-ratio:4/5;background:#e9e2d7;box-shadow:var(--sh-2)}
-  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
-  .photo-cap{position:absolute;left:16px;right:16px;bottom:16px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-  .photo-cap .k{font-size:13px;font-weight:600;color:var(--muted)}
-  .photo-cap .n{font-size:20px;font-weight:700;color:var(--ink);line-height:1.25}
-  .photo-cap .r{font-size:14px;color:var(--body)}
-  .aside-q{margin:14px 6px 0;font-size:15px;line-height:1.5;color:var(--body)}
-  .aside-q b{display:block;margin-top:6px;font-size:13px;font-weight:600;color:var(--muted)}
-  .foot{max-width:1120px;padding:32px 32px 48px}
-}
-.r-plan{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-.r-plan li{display:flex;align-items:flex-start;gap:9px;font-size:15.5px;line-height:1.4;color:var(--ink);text-wrap:pretty}
-.r-plan .ic{width:20px;height:20px;margin-top:1px}
-.opts-jobs{gap:8px}.opts-jobs .opt-card{min-height:56px;padding:8px 14px 8px 10px}
-.step-jobs .q-head{padding-top:18px}
-.opts-jobs .opt-txt{font-size:16px}
-
-.mw-logo{display:block;margin:0 auto;font-family:"DM Serif Display",Georgia,serif;color:var(--red);font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;line-height:1;text-align:center;width:auto!important;height:auto!important}
-.mw-logo i{display:block;font-size:.78rem;letter-spacing:.04em;text-transform:none;margin-top:4px;color:#b9694f}
-.mw-faces{width:44px!important;height:44px!important;border-radius:50%;object-fit:cover}
-.mw-wins{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 18px}
-.mw-wins figure{margin:0;background:#fff;border:1px solid rgba(40,28,18,.07);border-radius:16px;padding:8px;box-shadow:0 10px 24px -18px rgba(40,28,18,.35)}
-.mw-wins img{width:100%;border-radius:10px;display:block}
-.mw-wins figcaption{font-size:.82rem;line-height:1.35;color:#6b645d;padding:8px 4px 2px}
-.mw-wins figcaption b{color:#221e1b}
-.mw-vid{position:relative;display:block;margin:22px 0 0;aspect-ratio:16/9;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(40,28,18,.55)}
-.mw-vid img{width:100%;height:100%;object-fit:cover;display:block}
-.mw-vid:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55))}
-.mw-play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--red);z-index:2}
-.mw-play:before{content:"";position:absolute;left:29px;top:22px;border-left:20px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
-.mw-cap{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-weight:700;line-height:1.25}
-.mw-cap small{display:block;width:max-content;margin-bottom:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
-.mw-apply{margin-top:28px;scroll-margin-top:16px}.mw-apply .fields{margin-top:16px}.mw-apply .submit{margin-top:16px}
-.mw-done{margin-top:14px;font-weight:700;color:var(--red)}
-</style>
-
-<script data-topfix>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}addEventListener("load",function(){if(!location.hash){scrollTo(0,0);setTimeout(function(){scrollTo(0,0)},50)}});</script>
+    .cs-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:640px){.cs-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.cs-grid{grid-template-columns:repeat(4,1fr)}}
+  </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-ok" viewBox="0 0 22 22"><path d="M6.5 11.4l3 3L15.5 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-no" viewBox="0 0 22 22"><path d="M7.5 7.5l7 7m0-7l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
-<div class="shell">
-<div class="app">
 
-  <div class="bar">
-    <button type="button" class="back" data-back hidden style="display:none"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>
-    <span class="logo mw-logo">Mackenzie Whelan<i>wellness · wealth · motherhood</i></span>
-    <span class="count" data-count></span>
+<!-- Alpine wrapper -->
+<div x-data="{
+  applyOpen:false,
+  img:null,imgLoaded:false,
+  openImg(src){this.img=src;this.imgLoaded=false}
+}" x-init="$watch('img',v=>{document.body.style.overflow=v?'hidden':''})" @keydown.escape.window="if(img){img=null}else if(applyOpen){applyOpen=false}">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section style="background:#ffffff;padding-top:1.25rem;padding-bottom:4rem;">
+  <div style="max-width:860px;margin:0 auto;padding:0 1.25rem;text-align:center;">
+
+    <!-- Badge -->
+    <div class="h1" style="display:inline-flex;align-items:center;gap:8px;background:#FBEFE8;border:1px solid rgba(178,106,80,.3);border-radius:100px;padding:6px 16px;margin-bottom:1.75rem;">
+      <span class="hero-badge-text" style="font-size:.9rem;font-weight:600;letter-spacing:0;color:#2B221C;text-wrap:balance;">For working moms who want a <strong style="color:#8E4B36;font-weight:800;">second income</strong> from home</span>
+    </div>
+
+    <!-- H1 -->
+    <h1 class="h2 hero-h1" style="font-size:clamp(2rem,4.2vw,2.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:#2B221C;margin:0 auto 1.25rem;max-width:720px;">
+      Working Moms On My Team Are Making $15K&ndash;$50K In Commissions From Home.<br/>Could You Be Next?
+    </h1>
+
+    <!-- Sub -->
+    <p class="h3" style="font-size:clamp(1rem,2vw,1.2rem);color:#5A4A40;line-height:1.45;max-width:640px;margin:0 auto 2rem;">
+      Jess made $50,000 in commissions in 90 days, while still being present for her family. No business experience&nbsp;needed.
+    </p>
+
+    <!-- Hero video -->
+    <div id="hero-video-sticky-wrap" style="max-width:670px;margin:0 auto 2rem;">
+      <div class="sticky-vid-inner" style="border-radius:14px;overflow:hidden;box-shadow:0 24px 64px -12px rgba(43,34,28,.18);position:relative;aspect-ratio:16/9;background:#fff;">
+        <div id="vsl-thumb" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;" @click="applyOpen=true">
+          <img src="../assets/img/vsl-thumb.jpg?v=9" alt="Mackenzie Whelan" style="width:100%;height:100%;object-fit:cover;display:block;" fetchpriority="high" />
+          <div class="vsl-play-btn">
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="#fff"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-bottom:.75rem;">
+      <button class="btn btn-gold" @click="applyOpen=true">
+        See If You Qualify
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:#FBEFE8;border:1px solid rgba(178,106,80,.35);border-radius:100px;padding:7px 18px;margin-top:.875rem;">
+      <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1L1.5 3.5v4.25C1.5 11.19 3.88 13.93 7 15c3.12-1.07 5.5-3.81 5.5-7.25V3.5L7 1z" stroke="#B26A50" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.5 8l1.75 1.75L9.5 6" stroke="#B26A50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="hero-guar" style="font-size:.875rem;font-weight:700;color:#2B221C;"><span class="gb">No Business Experience Needed</span> <span class="gb">+ Works Around Your Job</span></span>
+    </div>
+
+    <!-- What you get on the call -->
+    <div style="margin:1.75rem auto 0;max-width:460px;text-align:left;">
+      <p style="font-size:.75rem;font-weight:700;color:#8A786C;text-transform:uppercase;letter-spacing:.12em;margin:0 0 .75rem;text-align:center;">On this call we&rsquo;ll:</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <div style="display:flex;align-items:flex-start;gap:.625rem;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#B26A50" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:.875rem;color:#5A4A40;line-height:1.5;">Look at your real week and find where a second income fits</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:.625rem;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#B26A50" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:.875rem;color:#5A4A40;line-height:1.5;">Show you the exact steps the women on my team followed to get started</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:.625rem;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#B26A50" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:.875rem;color:#5A4A40;line-height:1.5;">Tell you honestly whether this is a fit for you &mdash; no pressure either way</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social proof strip -->
+    <div class="proof-strip" style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.75rem;border-top:1px solid #EADFD4;">
+      <div style="text-align:center;flex-shrink:0;">
+        <div class="proof-num" style="font-size:1.25rem;font-weight:800;color:#2B221C;letter-spacing:-.02em;">48,000+</div>
+        <div class="proof-lbl" style="font-size:.7rem;font-weight:600;color:#8A786C;text-transform:uppercase;letter-spacing:.1em;margin-top:1px;">Women Follow Along</div>
+      </div>
+      <div class="proof-div" style="width:1px;height:32px;background:#EADFD4;flex-shrink:0;"></div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div class="proof-num" style="font-size:1.25rem;font-weight:800;color:#2B221C;letter-spacing:-.02em;">$50,000</div>
+        <div class="proof-lbl" style="font-size:.7rem;font-weight:600;color:#8A786C;text-transform:uppercase;letter-spacing:.1em;margin-top:1px;">Commissions in 90 Days</div>
+      </div>
+      <div class="proof-div" style="width:1px;height:32px;background:#EADFD4;flex-shrink:0;"></div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div class="proof-num" style="font-size:1.25rem;font-weight:800;color:#2B221C;letter-spacing:-.02em;">$300,000+</div>
+        <div class="proof-lbl" style="font-size:.7rem;font-weight:600;color:#8A786C;text-transform:uppercase;letter-spacing:.1em;margin-top:1px;">Team Sales &middot; Jess</div>
+      </div>
+    </div>
+
   </div>
-  <div class="prog" data-prog hidden aria-hidden="true"><i></i></div>
+</section>
 
-  <!-- ===== intro ===== -->
-  <section class="step intro is-current" data-step="0" aria-labelledby="h-intro">
-    <div class="host">
-      <img src="../assets/img/pfp.jpg" width="240" height="240" alt="Mackenzie Whelan" fetchpriority="high">
-      <div>
-        <p class="host-k"><b>Free</b> training with Mackenzie Whelan</p>
-        <p class="host-d">Watch it now, on your own time</p>
-      </div>
+<!-- ═══ PROMISE STRIP ═══ -->
+<section style="background:#F7F1EA;padding:2rem 1.25rem;border-bottom:1px solid #EADFD4;">
+  <div style="max-width:680px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+    <div style="background:#fff;border:1px solid #EADFD4;border-radius:12px;padding:1.25rem;text-align:center;">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B26A50;margin:0 0 .375rem;">Your schedule</p>
+      <p style="font-size:.9375rem;font-weight:800;color:#2B221C;margin:0 0 .3rem;line-height:1.25;">Works Around Your Job</p>
+      <p style="font-size:.8rem;color:#5A4A40;line-height:1.5;margin:0;">Most women on my team started with a full-time job and kids at home.</p>
     </div>
-
-    <h1 id="h-intro">Working moms on my team are making $15K–$50K in commissions from home. <span class="q">Could you be next?</span></h1>
-    <p class="lede">Jess made <b class="nw">$50,000</b> in commissions in 90 days, while still being present for her family. No business experience&nbsp;needed.</p>
-
-    <a class="mw-vid" href="#apply" aria-label="Watch the free training"><img src="../assets/img/vsl-thumb.jpg?v=9" alt="Mackenzie Whelan"><span class="mw-play"></span><span class="mw-cap"><small>Free training</small>How I built a second income online</span></a>
-    <div class="cta">
-      <a class="btn btn-2" href="#apply"><span class="stack"><span>Apply now</span> <span class="sm">Takes about 60 seconds</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
-
-    <div class="trust">
-      <img class="faces mw-faces" src="../assets/img/mw/faces.jpg" width="272" height="72" alt="">
-      <p class="trust-t"><b>48,000+ women</b>follow my journey</p>
-      
-    </div>
-
-    <div class="more">
-      <div class="card card-blush">
-        <p class="kick">Who it&rsquo;s for</p>
-        <h2>You don&rsquo;t need a business background.</h2>
-        <p>Most women on my team already had a full plate: a job, kids, a home to run. They wanted more freedom without giving up what they&rsquo;d built.</p>
-        <ul class="chips">
-          <li>Working moms</li><li>Stay-at-home moms</li><li>Corporate careers</li><li>Nurses &amp; teachers</li><li>Self-employed</li><li>Retired</li>
-        </ul>
-        <ul class="ticks ticks-sep">
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No business experience</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No big audience</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No quitting your job</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <p class="kick">How it works</p>
-        <h2>A business that runs on systems, not more hours</h2>
-        <ol class="how">
-          <li><span><b>A high-ticket wellness product.</b>Something I use in my own home, for my own family&rsquo;s health.</span></li>
-          <li><span><b>Step-by-step systems.</b>You follow the same steps I use, around your job and your kids.</span></li>
-          <li><span><b>Mentorship and automation already in place.</b>You&rsquo;re not building it from scratch, and you&rsquo;re not doing it alone.</span></li>
-        </ol>
-        <ul class="ticks ticks-sep">
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No inventory to manage</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No cold calling</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg>No quitting your job</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <p class="kick">Free training</p>
-        <h2>What Mackenzie shows you</h2>
-        <ul class="ticks learn">
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span>How I built a second income online alongside my career</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span>Why I&rsquo;d never recommend a traditional side hustle to a working&nbsp;mom</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span>The 3 things that helped the women on my team, step by&nbsp;step</span></li>
-        </ul>
-        <p class="bonus"><b>Watch to the end</b>, then apply below and I&rsquo;ll set up a call with&nbsp;you.</p>
-      </div>
-
-      <h2 class="sec-h">Real moms. Real numbers.</h2>
-      <div class="mw-wins">
-        <figure><img src="../assets/img/proof/jess-50k.jpg" alt="Jess, $50,000 in commissions in 90 days" loading="lazy"><figcaption><b>$50,000</b> in commissions in 90 days &middot; Jess</figcaption></figure>
-        <figure><img src="../assets/img/proof/sold-34k.jpg" alt="$34,000 in sales in 48 hours" loading="lazy"><figcaption><b>$34,000</b> in sales in 48 hours</figcaption></figure>
-        <figure><img src="../assets/img/proof/betty.jpg" alt="Betty, top enroller" loading="lazy"><figcaption><b>$22,565 AUD</b> in sales in one month &middot; Betty</figcaption></figure>
-        <figure><img src="../assets/img/proof/jess-300k.jpg" alt="Jess, $300,000 in sales" loading="lazy"><figcaption><b>$300,000</b> in sales &middot; Jess</figcaption></figure>
-      </div>
-      <figure class="t">
-        <div class="stars" role="img" aria-label="5 stars"><i></i><i></i><i></i><i></i><i></i></div>
-        <blockquote>&ldquo;Sometimes you don&rsquo;t even realize how much your life can shift until you say yes to something new.&rdquo;</blockquote>
-        <figcaption>Mackenzie Whelan</figcaption>
-      </figure>
-
-      <div class="again">
-        <a class="btn" href="#apply"><span>Apply now</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="again-note">Takes about 60 seconds</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="card mw-apply" id="apply">
-      <p class="kick">Application</p>
-      <h2>Apply to join my team</h2>
-      <p>Fill this in and I&rsquo;ll get back to you personally to set up a call.</p>
-      <form id="apply-form" novalidate>
-        <div class="fields">
-          <div class="field"><input id="Name" name="Name" type="text" autocomplete="given-name" placeholder=" " required><label for="Name">First name</label></div>
-          <div class="field"><input id="Email" name="Email" type="email" autocomplete="email" placeholder=" " required><label for="Email">Email</label></div>
-          <div class="field"><input id="Phone" name="Phone" type="tel" autocomplete="tel" placeholder=" " required><label for="Phone">Phone number</label></div>
-          <div class="field"><input id="IG" name="IG" type="text" placeholder=" "><label for="IG">Instagram handle</label></div>
-          <div class="field"><input id="Why" name="Why" type="text" placeholder=" "><label for="Why">What would a second income change for you?</label></div>
-        </div>
-        <div class="submit">
-          <button type="submit" class="btn submit-button"><span>Submit My Application</span><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg></button>
-        </div>
-        <p class="mw-done" hidden>Thank you! I&rsquo;ll be in touch personally within 24 hours.</p>
-      </form>
-    </section>
-</div>
-
-<aside class="aside" aria-label="Your host">
-  <div class="photo">
-    <img src="../assets/img/mw/host.jpg?v=2" width="720" height="900" alt="Mackenzie Whelan" loading="lazy">
-    <div class="photo-cap">
-      <p class="k">Your host</p>
-      <p class="n">Mackenzie Whelan</p>
-      <p class="r">Wife, mom and wellness advocate</p>
+    <div style="background:#fff;border:1px solid #EADFD4;border-radius:12px;padding:1.25rem;text-align:center;">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B26A50;margin:0 0 .375rem;">Your support</p>
+      <p style="font-size:.9375rem;font-weight:800;color:#2B221C;margin:0 0 .3rem;line-height:1.25;">You&rsquo;re Not Doing It Alone</p>
+      <p style="font-size:.8rem;color:#5A4A40;line-height:1.5;margin:0;">Step-by-step systems, mentorship and automation are already in place.</p>
     </div>
   </div>
-  <p class="aside-q">&ldquo;Now I help other driven women build a life that supports their health, creates real wealth, and feels aligned with how they actually want to live.&rdquo;<b>Mackenzie Whelan</b></p>
-</aside>
-</div>
+</section>
 
-<footer class="foot">
-  <p>Results shown are the personal results of women on Mackenzie&rsquo;s team and are not typical. Your results will vary and depend on many factors, including your effort, consistency and time. All business involves risk.</p>
-  <p class="meta"><span>&copy; 2026 Mackenzie Whelan</span></p>
+<!-- ═══════════════ RESULTS SECTION ═══════════════ -->
+<section style="background:#ffffff;padding:2.5rem 1.25rem 5rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Section header -->
+    <div class="rv" style="text-align:center;margin-bottom:3rem;">
+      <p class="ey" style="margin-bottom:.5rem;">Real Results</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.025em;color:#2B221C;margin-bottom:1rem;">What Happens When <br class="mob-br"/>Busy Moms Say Yes</h2>
+      <p style="font-size:1.0625rem;color:#5A4A40;max-width:580px;margin:0 auto;">Every woman below started with a full plate: a job, kids and a home to run. These are the real numbers from my team.</p>
+    </div>
+
+    <!-- ── CASE STUDY CARDS ── -->
+    <div class="cs-grid" style="margin-bottom:3rem;">
+
+      <div class="cs-card" @click="openImg('../assets/img/proof/jess-50k.jpg')" style="background:#2B221C;border-radius:14px;border:1px solid rgba(250,244,238,.07);border-top:3px solid #B26A50;cursor:pointer;padding:1.5rem 1.25rem;transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(178,106,80,.3);background:#3D2F26;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F7F1EA;font-size:1.1rem;flex-shrink:0;">J</div>
+          <div>
+            <p style="font-weight:700;color:#F7F1EA;font-size:.9375rem;margin:0;">Jess</p>
+            <p style="font-size:.75rem;color:#D59A80;margin:0;">Working Mom</p>
+          </div>
+        </div>
+        <p style="font-size:1.5rem;font-weight:800;color:#B26A50;margin:0 0 .25rem;">$50,000</p>
+        <p style="font-size:.8rem;color:rgba(250,244,238,.5);margin:0 0 1rem;">In Commissions &middot; First 90 Days</p>
+        <p style="font-size:.8125rem;color:rgba(250,244,238,.65);line-height:1.55;margin:0;">Built a second income from home in 90 days, while still being present for her family.</p>
+      </div>
+      <div class="cs-card" @click="openImg('../assets/img/proof/jess-300k.jpg')" style="background:#2B221C;border-radius:14px;border:1px solid rgba(250,244,238,.07);border-top:3px solid #D08C6E;cursor:pointer;padding:1.5rem 1.25rem;transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(178,106,80,.3);background:#3D2F26;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F7F1EA;font-size:1.1rem;flex-shrink:0;">J</div>
+          <div>
+            <p style="font-weight:700;color:#F7F1EA;font-size:.9375rem;margin:0;">Jess</p>
+            <p style="font-size:.75rem;color:#D59A80;margin:0;">Team Leader</p>
+          </div>
+        </div>
+        <p style="font-size:1.5rem;font-weight:800;color:#D08C6E;margin:0 0 .25rem;">$300,000</p>
+        <p style="font-size:.8rem;color:rgba(250,244,238,.5);margin:0 0 1rem;">In Sales &middot; 6A Rank</p>
+        <p style="font-size:.8125rem;color:rgba(250,244,238,.65);line-height:1.55;margin:0;">Kept going after her first 90 days and passed $300,000 in sales with her own team.</p>
+      </div>
+      <div class="cs-card" @click="openImg('../assets/img/proof/sold-34k.jpg')" style="background:#2B221C;border-radius:14px;border:1px solid rgba(250,244,238,.07);border-top:3px solid #C9967A;cursor:pointer;padding:1.5rem 1.25rem;transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(178,106,80,.3);background:#3D2F26;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F7F1EA;font-size:1.1rem;flex-shrink:0;">T</div>
+          <div>
+            <p style="font-weight:700;color:#F7F1EA;font-size:.9375rem;margin:0;">Team Win</p>
+            <p style="font-size:.75rem;color:#D59A80;margin:0;">Working Mom</p>
+          </div>
+        </div>
+        <p style="font-size:1.5rem;font-weight:800;color:#C9967A;margin:0 0 .25rem;">$34,000</p>
+        <p style="font-size:.8rem;color:rgba(250,244,238,.5);margin:0 0 1rem;">In Sales &middot; 48 Hours</p>
+        <p style="font-size:.8125rem;color:rgba(250,244,238,.65);line-height:1.55;margin:0;">$34,000 in sales in 48 hours, about $6,000 of it in her own commissions.</p>
+      </div>
+      <div class="cs-card" @click="openImg('../assets/img/proof/betty.jpg')" style="background:#2B221C;border-radius:14px;border:1px solid rgba(250,244,238,.07);border-top:3px solid #A35A43;cursor:pointer;padding:1.5rem 1.25rem;transition:transform .2s,border-color .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(178,106,80,.3);background:#3D2F26;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F7F1EA;font-size:1.1rem;flex-shrink:0;">B</div>
+          <div>
+            <p style="font-weight:700;color:#F7F1EA;font-size:.9375rem;margin:0;">Betty</p>
+            <p style="font-size:.75rem;color:#D59A80;margin:0;">Mom &amp; Business Owner</p>
+          </div>
+        </div>
+        <p style="font-size:1.5rem;font-weight:800;color:#A35A43;margin:0 0 .25rem;">$22,565 AUD</p>
+        <p style="font-size:.8rem;color:rgba(250,244,238,.5);margin:0 0 1rem;">In Sales &middot; One Month</p>
+        <p style="font-size:.8125rem;color:rgba(250,244,238,.65);line-height:1.55;margin:0;">$22,565 AUD in sales in a single month, on her own schedule, from home.</p>
+      </div>
+    </div>
+
+    <!-- ── WALL OF PROOF ── -->
+    <div class="rv d2" style="margin-bottom:2rem;max-width:900px;margin-left:auto;margin-right:auto;">
+      <div class="slack-grid">
+        <img class="slack-win" src="../assets/img/proof/jess-50k.jpg" alt="Team win" @click="openImg('../assets/img/proof/jess-50k.jpg')" style="cursor:pointer;" loading="lazy" />
+        <img class="slack-win" src="../assets/img/proof/sold-34k.jpg" alt="Team win" @click="openImg('../assets/img/proof/sold-34k.jpg')" style="cursor:pointer;" loading="lazy" />
+        <img class="slack-win" src="../assets/img/proof/betty.jpg" alt="Team win" @click="openImg('../assets/img/proof/betty.jpg')" style="cursor:pointer;" loading="lazy" />
+        <img class="slack-win" src="../assets/img/proof/jess-300k.jpg" alt="Team win" @click="openImg('../assets/img/proof/jess-300k.jpg')" style="cursor:pointer;" loading="lazy" />
+        <img class="slack-win" src="../assets/img/proof/ash-3a.jpg" alt="Team win" @click="openImg('../assets/img/proof/ash-3a.jpg')" style="cursor:pointer;" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Want to see more -->
+    <div class="rv d2" style="text-align:center;margin-bottom:3rem;">
+      <div style="display:inline-block;border:1px solid #EADFD4;border-radius:12px;padding:1.125rem 1.5rem;max-width:400px;width:100%;text-align:center;">
+        <p style="font-size:.75rem;font-weight:700;color:#8A786C;text-transform:uppercase;letter-spacing:.1em;margin:0 0 .625rem;">Want to see more?</p>
+        <div style="display:flex;flex-direction:column;gap:.35rem;margin-bottom:.75rem;text-align:left;display:inline-flex;">
+          <div style="display:flex;align-items:center;gap:.5rem;"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 7l4 4L13 3" stroke="#B26A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:.8125rem;color:#5A4A40;">New team wins every week</span></div>
+          <div style="display:flex;align-items:center;gap:.5rem;"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 7l4 4L13 3" stroke="#B26A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:.8125rem;color:#5A4A40;">Saved in my &ldquo;Team wins&rdquo; highlight</span></div>
+        </div>
+        <div><a href="https://www.instagram.com/mackenziewhelan/" target="_blank" rel="noopener" style="font-size:.8125rem;font-weight:700;color:#B26A50;text-decoration:underline;font-family:'DM Sans',sans-serif;">See them on Instagram &rarr;</a></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="rv" style="text-align:center;">
+      <button class="btn btn-gold" @click="applyOpen=true">
+        See If You Qualify
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div style="display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.6rem;">
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1L1.5 3.5v4.25C1.5 11.19 3.88 13.93 7 15c3.12-1.07 5.5-3.81 5.5-7.25V3.5L7 1z" stroke="#B26A50" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.5 8l1.75 1.75L9.5 6" stroke="#B26A50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:.7rem;font-weight:600;color:#8A786C;"><span class="gb">No Business Experience Needed</span> <span class="gb">+ Works Around Your Job</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div x-show="img" x-cloak @click.self="img=null" class="lb-wrap" style="z-index:600;">
+    <div style="position:relative;max-width:520px;width:100%;">
+      <button class="lb-close" @click="img=null"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <img :src="img" @load="imgLoaded=true" style="width:100%;border-radius:12px;display:block;" />
+      <div x-show="!imgLoaded" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div class="lb-spinner"></div></div>
+    </div>
+  </div>
+
+</section><!-- /results section -->
+
+<!-- ═══════════════ NO-EXPERIENCE SECTION ═══════════════ -->
+<section style="background:#F7F1EA;padding:5rem 1.25rem;">
+  <div class="rv" style="max-width:640px;margin:0 auto;text-align:center;">
+    <div style="width:72px;height:72px;border-radius:50%;background:#B26A50;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l7 8L26 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 style="font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.025em;color:#2B221C;margin-bottom:1.25rem;">No Experience Needed.</h2>
+    <p style="font-size:1.0625rem;color:#5A4A40;line-height:1.7;margin-bottom:1.75rem;">I had a career, a newborn and a husband whose health took a turn. I started anyway. So I built this for women with a full plate, not for women with free time.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:560px;margin:0 auto 2rem;text-align:left;">
+      <div style="background:#F3E8DE;border-radius:12px;padding:1.25rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B26A50;margin:0 0 .5rem;">What you won&rsquo;t do</p>
+        <p style="font-size:.9375rem;font-weight:800;color:#2B221C;margin:0 0 .4rem;line-height:1.3;">No Inventory. No Cold Calls.</p>
+        <p style="font-size:.8125rem;color:#5A4A40;line-height:1.55;margin:0;">Nothing to stock in your garage and nobody to chase on the phone.</p>
+      </div>
+      <div style="background:#F3E8DE;border-radius:12px;padding:1.25rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B26A50;margin:0 0 .5rem;">What you keep</p>
+        <p style="font-size:.9375rem;font-weight:800;color:#2B221C;margin:0 0 .4rem;line-height:1.3;">Your Job. Your Family Time.</p>
+        <p style="font-size:.8125rem;color:#5A4A40;line-height:1.55;margin:0;">You build it in the hours you already have, around your kids.</p>
+      </div>
+    </div>
+    <button class="btn btn-dark" @click="applyOpen=true">
+      See If You Qualify
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p style="font-size:.75rem;color:#8A786C;line-height:1.5;margin:1rem auto 0;max-width:300px;">Results shown are not typical.<br/>We go through everything on your call.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ SECTION ═══════════════ -->
+<section style="background:#ffffff;padding:5rem 1.25rem;">
+  <div style="max-width:768px;margin:0 auto;">
+    <div class="rv" style="text-align:center;margin-bottom:3rem;">
+      <p class="ey" style="margin-bottom:.5rem;">FAQ</p>
+      <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;letter-spacing:-.025em;color:#2B221C;">Common Questions</h2>
+    </div>
+
+    <!-- FAQ items -->
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:3rem;">
+
+      <div class="rv" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          I&rsquo;ve never run a business. Can I still do this?
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          Yes. Most women on my team had never sold anything before. You follow the same step-by-step systems I use, and you have mentorship from day one. Nobody expects you to figure it out alone.
+        </div>
+      </div>
+      <div class="rv d1" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          I already work full-time and have kids. When would I even do this?
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          That is exactly who this was built for. I started with a career, a newborn and a husband whose health took a turn. The women on my team fit this around school runs, lunch breaks and evenings. On the call we look at your real week and see where it fits.
+        </div>
+      </div>
+      <div class="rv d1" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          Do I need a big following on Instagram?
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          No. Jess didn&rsquo;t start with a big audience, and most of my team didn&rsquo;t either. What matters is following the steps every week, not how many followers you have.
+        </div>
+      </div>
+      <div class="rv d2" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          What would I actually be selling?
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          A high-ticket wellness product I use in my own home, for my own family&rsquo;s health. I walk you through exactly what it is and how it works on the call.
+        </div>
+      </div>
+      <div class="rv d2" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          Do I have to buy inventory or cold call people?
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          No. There is no inventory to manage and no cold calling. The systems and automation are already in place.
+        </div>
+      </div>
+      <div class="rv d3" x-data="{o:false}" style="border:1px solid #EADFD4;border-radius:12px;overflow:hidden;">
+        <button @click="o=!o" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#2B221C;text-align:left;gap:1rem;">
+          I need to think about it.
+          <span style="flex-shrink:0;font-size:1.25rem;color:#B26A50;" x-text="o?'×':'+'"></span>
+        </button>
+        <div x-show="o" style="padding:0 1.5rem 1.25rem;font-size:.9375rem;color:#5A4A40;line-height:1.7;">
+          Of course. The call is where you do the thinking. It&rsquo;s free, we look at your week and your goals, and you walk away knowing whether this fits your life, even if you decide it isn&rsquo;t for you.
+        </div>
+      </div>
+    </div><!-- /faq items -->
+
+    <div class="rv" style="text-align:center;">
+      <button class="btn btn-gold" @click="applyOpen=true">
+        See If You Qualify
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div style="display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.6rem;">
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1L1.5 3.5v4.25C1.5 11.19 3.88 13.93 7 15c3.12-1.07 5.5-3.81 5.5-7.25V3.5L7 1z" stroke="#B26A50" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.5 8l1.75 1.75L9.5 6" stroke="#B26A50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:.7rem;font-weight:600;color:#8A786C;"><span class="gb">No Business Experience Needed</span> <span class="gb">+ Works Around Your Job</span></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer style="background:#241B16;padding:3rem 1.25rem 6rem;padding-bottom:calc(6rem + env(safe-area-inset-bottom));">
+  <div style="max-width:960px;margin:0 auto;text-align:center;">
+    <p style="font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:#F7F1EA;margin:0 0 1.5rem;">Mackenzie Whelan</p>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <a href="https://www.instagram.com/mackenziewhelan/" target="_blank" rel="noopener" style="font-size:.8125rem;color:rgba(250,244,238,.45);text-decoration:none;">Instagram</a>
+    </div>
+
+    <p style="font-size:.8125rem;color:rgba(250,244,238,.35);margin-bottom:.75rem;">Copyright &copy; 2026 Mackenzie Whelan &middot; All rights reserved.</p>
+
+    <p style="font-size:.75rem;color:rgba(250,244,238,.2);line-height:1.85;max-width:720px;margin:0 auto 1rem;">All results on this page are from real women on Mackenzie&rsquo;s team. The results shown are not typical. Their experiences do not guarantee similar results. Individual results vary based on effort, consistency, time and other factors. All business involves risk.</p>
+
+    <p style="font-size:.75rem;color:rgba(250,244,238,.2);line-height:1.85;max-width:720px;margin:0 auto;">This site is not a part of the Facebook or Instagram website or Meta Inc. Additionally, this site is NOT endorsed by Facebook or Instagram in any way.</p>
+  </div>
 </footer>
 
 
+<!-- ═══════════════ APPLY POPUP ═══════════════ -->
+<div x-show="applyOpen" x-cloak class="apply-overlay" @click.self="applyOpen=false">
+  <div class="apply-modal">
+    <button class="lb-close" @click="applyOpen=false" style="position:absolute;top:.75rem;right:.75rem;background:#2B221C;" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></button>
 
+    <div x-data="{
+      step:1, submitted:false, redirecting:false,
+      answers:{mom:'',fullName:'',email:'',phone:'',change:'',hours:'',timeline:''},
+      emailError:false, phoneError:false,
+      selectTile(k,v){this.answers[k]=v;setTimeout(()=>this.nextStep(),280)},
+      nextStep(){if(this.step===2&&this.answers.fullName.trim().split(/\s+/).filter(Boolean).length<2)return;if(this.step<6)this.step++;else this.submitted=true;},
+      prevStep(){if(this.step>1)this.step--;},
+      trySubmit(){this.emailError=!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(this.answers.email.trim());this.phoneError=this.answers.phone.replace(/\D/g,'').length<7;if(!this.emailError&&!this.phoneError)this.step=4;}
+    }">
 
-<script>document.getElementById("apply-form").addEventListener("submit",function(e){e.preventDefault();this.querySelector(".mw-done").hidden=false;});</script>
+      <div x-show="redirecting" style="text-align:center;padding:2rem 0;">
+        <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:.75rem;">Thanks for your interest!</h3>
+        <p style="font-size:.9375rem;color:#5A4A40;line-height:1.65;">Take your time. Follow along on Instagram and come back when you&rsquo;re ready.</p>
+      </div>
+
+      <div x-show="!redirecting">
+        <!-- Progress bar -->
+        <div x-show="!submitted" class="apply-progress">
+          <div style="height:4px;background:#F1E6DC;border-radius:2px;overflow:hidden;">
+            <div :style="'width:'+Math.round(step/6*100)+'%;height:100%;background:#B26A50;border-radius:2px;transition:width .35s ease;'"></div>
+          </div>
+        </div>
+
+        <div x-show="!submitted">
+          <!-- Step 1 -->
+          <div x-show="step===1">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:.5rem;">Are you a mom who wants to build a second income from home?</h3>
+            <p style="font-size:.875rem;color:#8A786C;margin-bottom:1.25rem;">It only takes about 60 seconds to see if you qualify.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+              <button class="qtile qtile-lg" :class="{sel:answers.mom==='Yes'}" @click="selectTile('mom','Yes')">Yes</button>
+              <button class="qtile qtile-lg" :class="{sel:answers.mom==='Not yet a mom'}" @click="selectTile('mom','Not yet a mom')">Not a mom yet</button>
+            </div>
+          </div>
+          <!-- Step 2: full name -->
+          <div x-show="step===2">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:.5rem;">What&rsquo;s your full name?</h3>
+            <p style="font-size:.875rem;color:#8A786C;margin-bottom:1.25rem;">First and last name.</p>
+            <input type="text" class="form-input" placeholder="Jane Smith" autocomplete="name" x-model="answers.fullName" @keydown.enter="nextStep()" style="margin-bottom:.5rem;" />
+          </div>
+          <!-- Step 3: email + phone -->
+          <div x-show="step===3">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:.5rem;">Where should I send your call details?</h3>
+            <p style="font-size:.875rem;color:#8A786C;margin-bottom:1.25rem;">I&rsquo;ll message you personally to set up a time that works for you.</p>
+            <div style="margin-bottom:1rem;">
+              <label style="font-size:.875rem;font-weight:700;color:#2B221C;display:block;margin-bottom:.4rem;">Email address</label>
+              <input type="email" class="form-input" :class="{'input-error':emailError}" placeholder="you@email.com" autocomplete="email" x-model="answers.email" @input="emailError=false" />
+              <p x-show="emailError" style="font-size:.8rem;color:#C0392B;margin-top:.3rem;">Please enter a valid email address.</p>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="font-size:.875rem;font-weight:700;color:#2B221C;display:block;margin-bottom:.4rem;">Phone number</label>
+              <input type="tel" class="form-input" :class="{'input-error':phoneError}" placeholder="(555) 000-0000" inputmode="tel" autocomplete="tel" x-model="answers.phone" @input="phoneError=false" @keydown.enter="trySubmit()" />
+              <p x-show="phoneError" style="font-size:.8rem;color:#C0392B;margin-top:.3rem;">Please enter a valid phone number.</p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div x-show="step===4">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:1.25rem;">What would a second income change for you most?</h3>
+            <div class="con-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.625rem;">
+              <button class="qtile qtile-con" :class="{sel:answers.change==='More time with my kids'}" @click="selectTile('change','More time with my kids')">More time with my kids</button>
+              <button class="qtile qtile-con" :class="{sel:answers.change==='Leaving my 9 to 5'}" @click="selectTile('change','Leaving my 9 to 5')">Leaving my 9 to 5</button>
+              <button class="qtile qtile-con" :class="{sel:answers.change==='Paying off debt'}" @click="selectTile('change','Paying off debt')">Paying off debt</button>
+              <button class="qtile qtile-con" :class="{sel:answers.change==='Saving for our future'}" @click="selectTile('change','Saving for our future')">Saving for our future</button>
+              <button class="qtile qtile-con" :class="{sel:answers.change==='Taking pressure off my partner'}" @click="selectTile('change','Taking pressure off my partner')">Taking pressure off my partner</button>
+              <button class="qtile qtile-con" :class="{sel:answers.change==='More freedom to travel'}" @click="selectTile('change','More freedom to travel')">More freedom to travel</button>
+              <button class="qtile qtile-con" style="grid-column:span 2;" :class="{sel:answers.change==='I&rsquo;m not sure yet'}" @click="selectTile('change','I&rsquo;m not sure yet')">I&rsquo;m not sure yet</button>
+            </div>
+          </div>
+          <!-- Step 5 -->
+          <div x-show="step===5">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:1.25rem;">How many hours a week could you give this?</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.625rem;">
+              <button class="qtile" :class="{sel:answers.hours==='1 &ndash; 3 hours'}" @click="selectTile('hours','1 &ndash; 3 hours')">1 &ndash; 3 hours</button>
+              <button class="qtile" :class="{sel:answers.hours==='3 &ndash; 5 hours'}" @click="selectTile('hours','3 &ndash; 5 hours')">3 &ndash; 5 hours</button>
+              <button class="qtile" :class="{sel:answers.hours==='5 &ndash; 10 hours'}" @click="selectTile('hours','5 &ndash; 10 hours')">5 &ndash; 10 hours</button>
+              <button class="qtile" :class="{sel:answers.hours==='10+ hours'}" @click="selectTile('hours','10+ hours')">10+ hours</button>
+            </div>
+          </div>
+          <!-- Step 6 -->
+          <div x-show="step===6">
+            <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:1.25rem;">If it&rsquo;s a fit, how soon would you want to start?</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.625rem;">
+              <button class="qtile" :class="{sel:answers.timeline==='Right away'}" @click="selectTile('timeline','Right away')">Right away</button>
+              <button class="qtile" :class="{sel:answers.timeline==='In the next 2&ndash;4 weeks'}" @click="selectTile('timeline','In the next 2&ndash;4 weeks')">In the next 2&ndash;4 weeks</button>
+              <button class="qtile" style="grid-column:span 2;" :class="{sel:answers.timeline==='Later this year'}" @click="selectTile('timeline','Later this year')">Later this year</button>
+              <button class="qtile" :class="{sel:answers.timeline==='Just looking'}" @click="answers.timeline='Just looking';redirecting=true">Just looking</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom nav -->
+        <div class="apply-nav" x-show="!submitted&&step>1" x-cloak>
+          <button type="button" class="apply-back" @click="prevStep()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Back</span>
+          </button>
+          <button type="button" class="form-next" x-show="step===2" :disabled="answers.fullName.trim().split(/\s+/).filter(Boolean).length<2" @click="nextStep()">
+            Next
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="form-next" x-show="step===3" @click="trySubmit()">
+            Next
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Done -->
+        <div x-show="submitted" style="text-align:center;padding:1.5rem 0 2rem;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#FBEFE8;border:2px solid #B26A50;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#B26A50" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-size:1.25rem;font-weight:800;color:#2B221C;margin-bottom:.5rem;">You qualify for a call!</h3>
+          <p style="font-size:.9rem;color:#5A4A40;line-height:1.6;">I&rsquo;ll message you personally within 24 hours to pick a time. Keep an eye on your phone and email.</p>
+        </div>
+      </div>
+    </div><!-- /x-data form -->
+  </div>
+</div>
+
+</div><!-- /Alpine wrapper -->
+
+<script>
+// Scroll reveal
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!els.length)return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0,rootMargin:'0px 0px 250px 0px'});
+  els.forEach(el=>io.observe(el));
+})();
+</script>
 </body>
 </html>
+

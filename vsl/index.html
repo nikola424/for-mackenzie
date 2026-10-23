@@ -247,8 +247,17 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
 .mw-wins img{width:100%;border-radius:10px;display:block}
 .mw-wins figcaption{font-size:.82rem;line-height:1.35;color:#6b645d;padding:8px 4px 2px}
 .mw-wins figcaption b{color:#221e1b}
+.mw-vid{position:relative;display:block;margin:22px 0 0;aspect-ratio:16/9;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(40,28,18,.55)}
+.mw-vid img{width:100%;height:100%;object-fit:cover;display:block}
+.mw-vid:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55))}
+.mw-play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--red);z-index:2}
+.mw-play:before{content:"";position:absolute;left:29px;top:22px;border-left:20px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.mw-cap{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-weight:700;line-height:1.25}
+.mw-cap small{display:block;width:max-content;margin-bottom:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.mw-apply{margin-top:28px;scroll-margin-top:16px}.mw-apply .fields{margin-top:16px}.mw-apply .submit{margin-top:16px}
+.mw-done{margin-top:14px;font-weight:700;color:var(--red)}
 </style>
-<script>document.documentElement.classList.add("qz")</script>
+
 <script data-topfix>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}addEventListener("load",function(){if(!location.hash){scrollTo(0,0);setTimeout(function(){scrollTo(0,0)},50)}});</script>
 </head>
 <body>
@@ -257,7 +266,7 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
 <div class="app">
 
   <div class="bar">
-    <button type="button" class="back" data-back hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>
+    <button type="button" class="back" data-back hidden style="display:none"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>
     <span class="logo mw-logo">Mackenzie Whelan<i>wellness · wealth · motherhood</i></span>
     <span class="count" data-count></span>
   </div>
@@ -276,8 +285,9 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
     <h1 id="h-intro">Working moms on my team are making $15K–$50K in commissions from home. <span class="q">Could you be next?</span></h1>
     <p class="lede">Jess made <b class="nw">$50,000</b> in commissions in 90 days, while still being present for her family. No business experience&nbsp;needed.</p>
 
+    <a class="mw-vid" href="#apply" aria-label="Watch the free training"><img src="../assets/img/vsl-thumb.jpg?v=9" alt="Mackenzie Whelan"><span class="mw-play"></span><span class="mw-cap"><small>Free training</small>How I built a second income online</span></a>
     <div class="cta">
-      <a class="btn btn-2" href="#q1" data-hlc-start><span class="stack"><span>See if I qualify</span> <span class="sm">3 quick questions · 30 seconds</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn-2" href="#apply"><span class="stack"><span>Apply now</span> <span class="sm">Takes about 60 seconds</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
 
     <div class="trust">
@@ -324,7 +334,7 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
           <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span>Why I&rsquo;d never recommend a traditional side hustle to a working&nbsp;mom</span></li>
           <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span>The 3 things that helped the women on my team, step by&nbsp;step</span></li>
         </ul>
-        <p class="bonus"><b>Watch to the end</b> to see how to book a free call with me and find out if it fits your&nbsp;life.</p>
+        <p class="bonus"><b>Watch to the end</b>, then apply below and I&rsquo;ll set up a call with&nbsp;you.</p>
       </div>
 
       <h2 class="sec-h">Real moms. Real numbers.</h2>
@@ -341,97 +351,30 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
       </figure>
 
       <div class="again">
-        <a class="btn" href="#q1" data-hlc-start><span>See if I qualify</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="again-note">Free training · Watch it now</p>
+        <a class="btn" href="#apply"><span>Apply now</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="again-note">Takes about 60 seconds</p>
       </div>
     </div>
   </section>
 
-  <form id="optin-form" data-hlc-optin method="post" action="/api/optin?redirect=/natural-born-yapper-c">
-    <input type="hidden" name="quiz_experience" value="" data-answer disabled>
-    <input type="hidden" name="quiz_income_goal" value="" data-answer disabled>
-    <input type="hidden" name="quiz_availability" value="" data-answer disabled>
-
-    <!-- ===== Q1 ===== -->
-    <fieldset class="step step-jobs" data-step="1" id="q1" aria-labelledby="q1-t">
-      <div class="q-head">
-        <h2 class="q-title" id="q1-t" data-focus tabindex="-1">What do you do right now?</h2>
-        <p class="q-hint">Pick the closest one. Everyone&rsquo;s welcome.</p>
-      </div>
-      <div class="opts opts-jobs">
-        <label class="opt"><input type="radio" name="quiz_experience" value="Working mom with a career" data-fit="You already juggle deadlines and family. The systems are built for exactly that&nbsp;schedule."><span class="opt-card"><span class="opt-ico" aria-hidden="true">💼</span><span class="opt-txt">Working mom with a career</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_experience" value="Stay-at-home mom" data-fit="You already run a home. This builds an income around the time you actually&nbsp;have."><span class="opt-card"><span class="opt-ico" aria-hidden="true">🏡</span><span class="opt-txt">Stay-at-home mom</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_experience" value="Nurse or teacher" data-fit="You already take care of people all day. Talking about wellness comes&nbsp;naturally."><span class="opt-card"><span class="opt-ico" aria-hidden="true">🩺</span><span class="opt-txt">Nurse or teacher</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_experience" value="Corporate career" data-fit="You already know how to follow a process. Here the process is already&nbsp;built."><span class="opt-card"><span class="opt-ico" aria-hidden="true">📊</span><span class="opt-txt">Corporate career</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_experience" value="Self-employed or business owner" data-fit="You already know what it takes. Here the systems and mentorship are in place for&nbsp;you."><span class="opt-card"><span class="opt-ico" aria-hidden="true">💡</span><span class="opt-txt">Self-employed or business owner</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_experience" value="Something else" data-fit="You don&rsquo;t need any experience. You follow the same steps the women on my team&nbsp;use."><span class="opt-card"><span class="opt-ico" aria-hidden="true">✨</span><span class="opt-txt">Something else</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-      </div>
-    </fieldset>
-
-    <!-- ===== Q2 ===== -->
-    <fieldset class="step" data-step="2" id="q2" aria-labelledby="q2-t">
-      <div class="q-head">
-        <h2 class="q-title" id="q2-t" data-focus tabindex="-1">What would you like to make each month?</h2>
-        <p class="q-hint">Just your goal. There’s no wrong answer.</p>
-      </div>
-      <div class="opts">
-        <label class="opt"><input type="radio" name="quiz_income_goal" value="$1–3K on the side" data-goal="$1–3K on the side is where most women on my team start. The training shows you&nbsp;how."><span class="opt-card"><span class="opt-ico" aria-hidden="true">💵</span><span class="opt-txt">$1–3K on the side</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_income_goal" value="$3–5K a month" data-goal="$3–5K a month is the range the training breaks down, step by&nbsp;step."><span class="opt-card"><span class="opt-ico" aria-hidden="true">💰</span><span class="opt-txt">$3–5K a month</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_income_goal" value="$5K+ and more freedom" data-goal="$5K+ and more freedom: Jess made $50,000 in commissions in 90 days. The training shows you the&nbsp;steps."><span class="opt-card"><span class="opt-ico" aria-hidden="true">👋</span><span class="opt-txt">$5K+ and more freedom</span><span class="opt-dot" aria-hidden="true"></span></span></label>
+  <section class="card mw-apply" id="apply">
+      <p class="kick">Application</p>
+      <h2>Apply to join my team</h2>
+      <p>Fill this in and I&rsquo;ll get back to you personally to set up a call.</p>
+      <form id="apply-form" novalidate>
+        <div class="fields">
+          <div class="field"><input id="Name" name="Name" type="text" autocomplete="given-name" placeholder=" " required><label for="Name">First name</label></div>
+          <div class="field"><input id="Email" name="Email" type="email" autocomplete="email" placeholder=" " required><label for="Email">Email</label></div>
+          <div class="field"><input id="Phone" name="Phone" type="tel" autocomplete="tel" placeholder=" " required><label for="Phone">Phone number</label></div>
+          <div class="field"><input id="IG" name="IG" type="text" placeholder=" "><label for="IG">Instagram handle</label></div>
+          <div class="field"><input id="Why" name="Why" type="text" placeholder=" "><label for="Why">What would a second income change for you?</label></div>
         </div>
-    </fieldset>
-
-    <!-- ===== Q3 ===== -->
-    <fieldset class="step" data-step="3" id="q3" aria-labelledby="q3-t">
-      <div class="q-head">
-        <h2 class="q-title" id="q3-t" data-focus tabindex="-1">How much time could you give it each week?</h2>
-        <p class="q-hint">Just a rough idea. You build around your own schedule.</p>
-      </div>
-      <div class="opts">
-        <label class="opt"><input type="radio" name="quiz_availability" value="Under 5 hours" data-when="Under 5 hours a week is enough to start. You set the&nbsp;pace."><span class="opt-card"><span class="opt-ico" aria-hidden="true">🌙</span><span class="opt-txt">Under 5 hours</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_availability" value="5 to 10 hours" data-when="5 to 10 hours a week is enough to start. You set the&nbsp;pace."><span class="opt-card"><span class="opt-ico" aria-hidden="true">📅</span><span class="opt-txt">5 to 10 hours</span><span class="opt-dot" aria-hidden="true"></span></span></label>
-        <label class="opt"><input type="radio" name="quiz_availability" value="More than 10 hours" data-when="More than 10 hours a week means you can grow faster. I&rsquo;ll show you&nbsp;how."><span class="opt-card"><span class="opt-ico" aria-hidden="true">☀️</span><span class="opt-txt">More than 10 hours</span><span class="opt-dot" aria-hidden="true"></span></span></label>
+        <div class="submit">
+          <button type="submit" class="btn submit-button"><span>Submit My Application</span><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg></button>
         </div>
-    </fieldset>
-
-    <!-- ===== result + form ===== -->
-    <section class="step result" data-step="4" id="fit" aria-labelledby="fit-t">
-      <div class="r-head">
-        <p class="kick kick-ok"><svg class="ic ic-solid" aria-hidden="true"><use href="#i-ok"/></svg>You qualify</p>
-        <h2 class="r-title" id="fit-t" data-focus tabindex="-1">You’re a great fit ✨</h2>
-        <p class="r-line" data-fit-line>Busy, ambitious women are exactly who this was built&nbsp;for.</p>
-        <ul class="r-plan">
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span data-goal-line>Jess made $50,000 in commissions in 90 days. The training shows you the&nbsp;steps.</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-ok"/></svg><span data-when-line>You build around your own schedule, not the other way&nbsp;around.</span></li>
-        </ul>
-      </div>
-
-      <div class="seat">
-        <img src="../assets/img/pfp.jpg" width="240" height="240" alt="" loading="lazy">
-        <div>
-          <p class="seat-h">Get the free training</p>
-          <p class="seat-d">Watch it now, on your own time</p>
-        </div>
-      </div>
-
-      <div class="fields">
-        <div class="field"><input id="Name" name="Name" type="text" autocomplete="given-name" maxlength="256" placeholder=" " required><label for="Name">First name</label></div>
-        <div class="field"><input id="Email" name="Email" type="email" autocomplete="email" inputmode="email" maxlength="256" placeholder=" " required><label for="Email">Email</label></div>
-        <div class="field"><input id="Phone" name="Phone" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="256" placeholder=" " required><label for="Phone">Phone number</label></div>
-      </div>
-
-      <div class="submit">
-        <button type="submit" class="btn submit-button w-button" data-wait="Unlocking…"><span>Watch The Free Training</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-      <p class="r-bonus">Then book a free call with me to see if it fits your&nbsp;life.</p>
-
-      <figure class="t r-t">
-        <div class="stars" role="img" aria-label="5 stars"><i></i><i></i><i></i><i></i><i></i></div>
-        <blockquote>&ldquo;Jess brought in $50K in commissions in 90 days, building her business from home while still being present for her family.&rdquo;</blockquote>
-        <figcaption>From Mackenzie&rsquo;s team wins</figcaption>
-      </figure>
+        <p class="mw-done" hidden>Thank you! I&rsquo;ll be in touch personally within 24 hours.</p>
+      </form>
     </section>
-  </form>
 </div>
 
 <aside class="aside" aria-label="Your host">
@@ -454,110 +397,7 @@ html:not(.qz) form,html:not(.qz) .step~.step{margin-top:36px;padding-top:12px;bo
 
 
 
-<script>
-(function () {
-  var d = document, html = d.documentElement;
-  try {
-    var form = d.getElementById("optin-form");
-    var back = d.querySelector("[data-back]");
-    var count = d.querySelector("[data-count]");
-    var prog = d.querySelector("[data-prog]");
-    var fill = prog.firstElementChild;
-    var fitLine = d.querySelector("[data-fit-line]");
-    var dl = (window.dataLayer = window.dataLayer || []);
-    var V = html.getAttribute("data-variant") || "qualify";
-    var PCT = [0, 25, 50, 75, 92];
-    var cur = 0, started = false, completed = false, timer = null, lastArrow = 0;
 
-    function step(n) { return d.querySelector('[data-step="' + n + '"]'); }
-    function push(o) { o.optin_variant = V; dl.push(o); }
-    function val(name) { var h = form.querySelector('input[type="hidden"][name="' + name + '"]'); return h ? h.value : ""; }
-
-    /* Step mode: the visible radios leave the form (a form id that does not
-       exist), the hidden quiz_* inputs carry the answers instead. Without JS
-       the radios post themselves and the hidden inputs stay disabled. */
-    [].forEach.call(form.querySelectorAll(".opt input"), function (r) { r.setAttribute("form", "qz-choices"); });
-    [].forEach.call(form.querySelectorAll("input[data-answer]"), function (h) { h.disabled = false; });
-
-    function go(n, dir) {
-      var to = step(n);
-      if (!to || n === cur) return;
-      step(cur).classList.remove("is-current");
-      html.setAttribute("data-dir", dir || "fwd");
-      html.classList.add("qz-go");
-      to.classList.add("is-current");
-      cur = n;
-      back.hidden = n === 0;
-      prog.hidden = n === 0;
-      fill.style.width = PCT[n] + "%";
-      count.textContent = n > 0 && n < 4 ? n + " of 3" : n === 4 ? "Last step" : "";
-      if (n === 4) {
-        var r = form.querySelector('input[name="quiz_experience"]:checked');
-        if (r && r.getAttribute("data-fit")) fitLine.textContent = r.getAttribute("data-fit");
-        [["quiz_income_goal", "data-goal", "[data-goal-line]"], ["quiz_availability", "data-when", "[data-when-line]"]].forEach(function (p) {
-          var x = form.querySelector('input[name="' + p[0] + '"]:checked'), el = d.querySelector(p[2]);
-          if (x && el && x.getAttribute(p[1])) el.textContent = x.getAttribute(p[1]);
-        });
-      }
-      window.scrollTo(0, 0);
-      var h = to.querySelector("[data-focus]");
-      if (h) h.focus({ preventScroll: true });
-    }
-
-    function choose(r, advance) {
-      var n = +r.closest("[data-step]").getAttribute("data-step");
-      var h = form.querySelector('input[type="hidden"][name="' + r.name + '"]');
-      r.checked = true;
-      if (h && h.value !== r.value) {
-        h.value = r.value;
-        push({ event: "quiz_answer", quiz_question: r.name, quiz_step: n, quiz_value: r.value });
-      }
-      if (!advance) return;
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        if (cur !== n) return;
-        if (n < 3) return go(n + 1);
-        if (!completed) {
-          completed = true;
-          push({ event: "quiz_complete", quiz_experience: val("quiz_experience"), quiz_income_goal: val("quiz_income_goal"), quiz_availability: val("quiz_availability") });
-        }
-        go(4);
-      }, 250);
-    }
-
-    d.addEventListener("click", function (e) {
-      var t = e.target;
-      if (!t.closest) return;
-      if (t.closest("[data-hlc-start]")) {
-        e.preventDefault();
-        if (!started) { started = true; push({ event: "quiz_start" }); }
-        go(1);
-        return;
-      }
-      if (t.closest("[data-back]")) {
-        e.preventDefault();
-        if (cur > 0) go(cur - 1, "back");
-        return;
-      }
-      /* A tap or Space confirms and advances; arrow keys only move the choice. */
-      if (t.matches(".opt input")) choose(t, Date.now() - lastArrow > 150);
-    });
-    form.addEventListener("keydown", function (e) {
-      if (!e.target.matches(".opt input")) return;
-      if (e.key.indexOf("Arrow") === 0) lastArrow = Date.now();
-      else if (e.key === "Enter" || (e.key === " " && e.target.checked)) { e.preventDefault(); lastArrow = 0; choose(e.target, true); }
-    });
-    form.addEventListener("change", function (e) {
-      if (e.target.matches(".opt input")) choose(e.target, false);
-    });
-  } catch (err) {
-    /* Anything unexpected: fall back to the plain scrolling page. */
-    html.classList.remove("qz", "qz-go");
-    [].forEach.call(d.querySelectorAll(".opt input"), function (r) { r.removeAttribute("form"); });
-    [].forEach.call(d.querySelectorAll("input[data-answer]"), function (h) { h.disabled = true; });
-  }
-})();
-</script>
-<script>document.getElementById("optin-form").addEventListener("submit",function(e){e.preventDefault();});</script>
+<script>document.getElementById("apply-form").addEventListener("submit",function(e){e.preventDefault();this.querySelector(".mw-done").hidden=false;});</script>
 </body>
 </html>

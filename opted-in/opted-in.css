@@ -97,5 +97,5 @@ table, pre { display: block; max-width: 100%; overflow-x: auto; }
 
 /* asset buttons, like Yvonne's "GET THE DIFFERENCE SHEET" */
 .asset { margin: 18px 0 6px; }
-.asset__btn { display: inline-block; padding: 14px 22px; border-radius: 10px; background: var(--accent-text); color: #0a0808; font-weight: 700; font-size: .9rem; letter-spacing: .04em; text-decoration: none; }
+.asset__btn { display: inline-block; padding: 14px 22px; border-radius: 10px; background: var(--accent-text); color: #fff; font-weight: 700; font-size: .9rem; letter-spacing: .04em; text-decoration: none; }
 .asset__btn:hover { filter: brightness(1.08); }

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Training · Mackenzie Whelan</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..800&family=DM+Serif+Display:ital@0;1&display=swap" />
+<script data-topfix>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}addEventListener("load",function(){if(!location.hash){scrollTo(0,0);setTimeout(function(){scrollTo(0,0)},50)}});</script>
+<style>
+  :root {
+    --bg: #f9f6f1; --card: #ffffff; --card-2: #f4eee6; --ink: #221e1b; --ink-2: #4a433d; --muted: #6b645d;
+    --line: rgba(34,30,27,.1); --accent: #b03342; --accent-2: #c9485a; --accent-soft: rgba(176,51,66,.08);
+    --radius: 24px; --sans: "DM Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--sans); overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 22px max(20px, env(safe-area-inset-left, 0px)) 60px; }
+
+  .logo { margin: 0; text-align: center; font-family: "DM Serif Display", Georgia, serif; color: var(--accent); font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase; line-height: 1; }
+  .logo i { display: block; font-size: .8rem; letter-spacing: .04em; text-transform: none; margin-top: 4px; color: var(--accent-2); }
+
+  .host { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; }
+  .host img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #fff, 0 6px 16px -6px rgba(0,0,0,.35); }
+  .host p { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--ink-2); }
+  .host b { color: var(--accent); font-weight: 700; }
+  .host strong { display: block; color: var(--ink); font-weight: 700; }
+
+  h1 { margin: 22px 0 0; font-size: clamp(2.15rem, 7.4vw, 3.1rem); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700; color: var(--ink); text-wrap: balance; }
+  h1 em { display: block; margin-top: 8px; font-style: normal; color: var(--accent); }
+  .sub { margin: 18px 0 0; font-size: 1.12rem; line-height: 1.5; color: var(--ink-2); }
+  .sub b { color: var(--ink); }
+
+  .vid { position: relative; display: block; margin: 26px 0 0; width: 100%; aspect-ratio: 16/9; border: 0; padding: 0; border-radius: 20px; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 30px 60px -34px rgba(34,30,27,.55); }
+  .vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
+  .vid:hover img { transform: scale(1.03); }
+  .vid::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.55)); }
+  .vid__play { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%; background: var(--accent); z-index: 2; box-shadow: 0 10px 30px -8px rgba(176,51,66,.8); }
+  .vid__play::before { content: ""; position: absolute; left: 31px; top: 24px; border-left: 20px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+  .vid__cap { position: absolute; left: 18px; bottom: 16px; z-index: 2; color: #fff; text-align: left; font-weight: 700; font-size: 1.02rem; line-height: 1.25; }
+  .vid__cap small { display: inline-block; margin-bottom: 6px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
+
+  .cta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 100%; margin: 24px 0 0; padding: 18px 26px; border: 0; border-radius: 999px; background: linear-gradient(180deg, var(--accent-2), var(--accent)); color: #fff; text-decoration: none; font: 700 1.2rem/1.2 var(--sans); cursor: pointer;
+         box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.26), inset 0 1px 0 rgba(255,255,255,.22), 0 14px 28px -12px rgba(176,51,66,.6), 0 2px 4px rgba(176,51,66,.16); transition: transform .2s; }
+  .cta:hover { transform: translateY(-2px); }
+  .cta small { font-weight: 400; font-size: .82rem; opacity: .85; }
+
+  .proof { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 18px 0 0; }
+  .proof__faces { display: flex; }
+  .proof__faces img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg); margin-left: -9px; }
+  .proof__faces img:first-child { margin-left: 0; }
+  .proof p { margin: 0; font-size: .9rem; line-height: 1.25; color: var(--muted); }
+  .proof b { display: block; color: var(--ink); font-size: 1rem; }
+
+  .card { margin: 34px 0 0; padding: 28px 24px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: 0 20px 40px -32px rgba(34,30,27,.35); }
+  .card--tint { background: linear-gradient(180deg, #fbf2f1, #fff); }
+  .card .k, .k { margin: 0; font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  h2 { margin: 10px 0 0; font-size: clamp(1.55rem, 5vw, 1.9rem); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; text-wrap: balance; }
+  .card p { margin: 12px 0 0; color: var(--ink-2); font-size: 1.02rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+  .chips li { padding: 8px 14px; border-radius: 999px; background: var(--card-2); font-size: .92rem; font-weight: 500; color: var(--ink); }
+  .chips li.no { background: transparent; border: 1px dashed rgba(34,30,27,.25); color: var(--muted); }
+
+  .steps { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: s; }
+  .steps li { display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; }
+  .steps li::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+  .steps b { display: block; font-size: 1.05rem; color: var(--ink); }
+  .steps span { color: var(--muted); font-size: .96rem; }
+
+  .story { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; margin-top: 16px; }
+  .story img { width: 150px; height: 200px; object-fit: cover; object-position: 50% 15%; border-radius: 18px; }
+  .story p:first-of-type { margin-top: 0; }
+
+  .team img { width: 100%; height: 300px; object-fit: cover; object-position: 50% 35%; border-radius: 18px; margin: 18px 0 0; }
+  .quote { margin: 18px 0 0; padding-left: 18px; border-left: 3px solid var(--accent); font-family: "DM Serif Display", Georgia, serif; font-style: italic; font-size: 1.4rem !important; line-height: 1.3; color: var(--ink) !important; }
+
+  .faq details { border-top: 1px solid var(--line); padding: 16px 0; }
+  .faq details:first-of-type { margin-top: 10px; }
+  .faq summary { cursor: pointer; list-style: none; font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--accent); font-weight: 700; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details p { margin: 8px 0 0; }
+
+  .apply { scroll-margin-top: 20px; }
+  .apply__bar { height: 6px; border-radius: 999px; background: var(--card-2); overflow: hidden; margin: 18px 0 0; }
+  .apply__bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .4s; }
+  .q { display: none; margin: 18px 0 0; }
+  .q.on { display: block; animation: in .35s ease; }
+  @keyframes in { from { opacity: 0; transform: translateY(8px); } }
+  .q small { color: var(--muted); font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; }
+  .q h3 { margin: 6px 0 14px; font-size: 1.3rem; line-height: 1.2; letter-spacing: -0.02em; }
+  .q input { width: 100%; padding: 15px 18px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); font: 500 1.05rem var(--sans); color: var(--ink); }
+  .q input:focus { outline: none; border-color: var(--accent); }
+  .opt { display: block; width: 100%; margin: 0 0 10px; padding: 15px 18px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--card); text-align: left; font: 500 1.02rem var(--sans); color: var(--ink); cursor: pointer; }
+  .opt:hover, .opt.sel { border-color: var(--accent); background: var(--accent-soft); }
+  .ok { margin-top: 12px; padding: 13px 26px; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 700 1rem var(--sans); cursor: pointer; }
+  .days { display: flex; gap: 10px; }
+  .day { flex: 1; padding: 12px 0; border-radius: 14px; border: 1.5px solid var(--line); background: var(--card); text-align: center; cursor: pointer; font: 500 .9rem var(--sans); color: var(--ink); }
+  .day b { display: block; font-size: 1.3rem; }
+  .day.sel { border-color: var(--accent); background: var(--accent-soft); }
+  .slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  .slot { padding: 13px 0; border-radius: 999px; background: var(--accent); color: #fff; text-align: center; text-decoration: none; font-weight: 700; }
+
+  .foot { margin: 40px 0 0; text-align: center; color: var(--muted); font-size: .85rem; }
+
+  .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(34,30,27,.55); backdrop-filter: blur(4px); }
+  .modal.on { display: flex; }
+  .modal__card { position: relative; width: min(440px, 100%); padding: 30px 26px; border-radius: var(--radius); background: var(--card); text-align: center; }
+  .modal__card h3 { margin: 6px 0 16px; font-size: 1.45rem; letter-spacing: -0.02em; }
+  .modal__card input { width: 100%; padding: 15px 18px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); font: 500 1.05rem var(--sans); }
+  .modal__card .cta { margin-top: 14px; }
+  .modal__x { position: absolute; right: 14px; top: 10px; border: 0; background: none; font-size: 1.6rem; color: var(--muted); cursor: pointer; }
+
+  @media (max-width: 480px) {
+    .story { grid-template-columns: 1fr; }
+    .story img { width: 100%; height: 300px; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="logo">Mackenzie Whelan<i>wellness · wealth · motherhood</i></p>
+
+    <div class="host">
+      <img src="../assets/img/pfp.jpg" alt="Mackenzie Whelan" />
+      <p><b>Free</b> training with Mackenzie Whelan<strong>Watch it now, on your own time</strong></p>
+    </div>
+
+    <h1>Discover how busy moms are building a second income online. <em>Is it right for you?</em></h1>
+    <p class="sub">My free training shows you exactly how it works, <b>alongside your career and your kids.</b> No business experience needed.</p>
+
+    <button class="vid" type="button" data-optin aria-label="Watch the free training">
+      <img src="../assets/img/vsl-thumb.jpg?v=4" alt="Mackenzie Whelan" />
+      <span class="vid__play" aria-hidden="true"></span>
+      <span class="vid__cap"><small>Free training</small><br />How I built a second income online</span>
+    </button>
+
+    <a class="cta" href="#apply">See if it&rsquo;s right for me <small>5 quick questions · 60 seconds</small></a>
+
+    <div class="proof">
+      <span class="proof__faces"><img src="../assets/img/pfp.jpg" alt="" /></span>
+      <p><b>48,000+ women</b>follow my journey</p>
+    </div>
+
+    <section class="card card--tint">
+      <p class="k">Who it&rsquo;s for</p>
+      <h2>Women who want an income of their own.</h2>
+      <p>Most of the women I work with already have a full plate: a job, a family, a home to run. They want more freedom without giving up what they&rsquo;ve built.</p>
+      <ul class="chips">
+        <li>Working moms</li><li>Stay-at-home moms</li><li>Corporate careers</li><li>Nurses &amp; teachers</li><li>Self-employed</li>
+        <li class="no">No business experience</li><li class="no">No big audience</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <p class="k">How it works</p>
+      <h2>A business that runs on systems, not on more hours.</h2>
+      <ol class="steps">
+        <li><div><b>A high-ticket wellness product</b><span>Something I use in my own home, for my own family&rsquo;s health.</span></div></li>
+        <li><div><b>Step-by-step systems</b><span>You follow the same steps I use, one at a time.</span></div></li>
+        <li><div><b>Mentorship and automation already in place</b><span>You&rsquo;re not building it from scratch, and you&rsquo;re not doing it alone.</span></div></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <p class="k">My story</p>
+      <h2>Hi, I&rsquo;m Mackenzie.</h2>
+      <div class="story">
+        <img src="../assets/img/story.jpg?v=3" alt="Mackenzie Whelan" loading="lazy" />
+        <div>
+          <p>For over a decade I built my life around my career, and I loved every minute of it.</p>
+          <p>Then I had my son. Around the same time, my husband&rsquo;s health took a turn. Overnight I was navigating motherhood, caretaking and providing for our family.</p>
+          <p>One late-night deep dive changed the direction of our life. Today we&rsquo;re healthy, happy and living by the beach, and I&rsquo;m building a wellness business online alongside my career.</p>
+          <p><b>Now I help other driven women do the same.</b></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card team">
+      <p class="k">You won&rsquo;t do it alone</p>
+      <h2>A team of women building alongside you.</h2>
+            <p class="quote">&ldquo;Put a group of ambitious women together, give them permission to have fun, and see what happens to their business.&rdquo;</p>
+    </section>
+
+    <section class="card faq">
+      <p class="k">Before you ask</p>
+      <h2>Honest answers.</h2>
+      <details open><summary>&ldquo;I don&rsquo;t have time to start a business.&rdquo;</summary><p>That&rsquo;s exactly why I wouldn&rsquo;t recommend a traditional business to a working mom. The systems, mentorship and automation are already in place, so you build around the time you actually have.</p></details>
+      <details><summary>Do I need any experience?</summary><p>No. You follow the same step-by-step systems I use, with mentorship along the way.</p></details>
+      <details><summary>What happens after I apply?</summary><p>You pick a time for a call with me. We look at where you are, I show you how it works, and we decide together if it&rsquo;s a fit.</p></details>
+    </section>
+
+    <section class="card apply" id="apply">
+      <p class="k">See if it&rsquo;s right for you</p>
+      <h2>5 quick questions, then pick a time for a call with me.</h2>
+      <div class="apply__bar"><span id="bar"></span></div>
+      <div id="qs">
+        <div class="q on"><small>Question 1 of 5</small><h3>What&rsquo;s your first name?</h3><input type="text" placeholder="Type your answer here..." autocomplete="given-name" /><button class="ok" type="button">Next</button></div>
+        <div class="q"><small>Question 2 of 5</small><h3>Which one sounds most like you?</h3><button class="opt" type="button">Working mom with a career</button><button class="opt" type="button">Stay-at-home mom</button><button class="opt" type="button">Business owner</button><button class="opt" type="button">Something else</button></div>
+        <div class="q"><small>Question 3 of 5</small><h3>How much time could you give this each week?</h3><button class="opt" type="button">Under 5 hours</button><button class="opt" type="button">5 to 10 hours</button><button class="opt" type="button">More than 10 hours</button></div>
+        <div class="q"><small>Question 4 of 5</small><h3>What would a second income change for you?</h3><button class="opt" type="button">More time with my kids</button><button class="opt" type="button">Less pressure on one paycheck</button><button class="opt" type="button">Freedom to leave my job one day</button></div>
+        <div class="q"><small>Question 5 of 5</small><h3>What&rsquo;s your Instagram handle?</h3><input type="text" placeholder="@yourhandle" autocomplete="off" /><button class="ok" type="button">Next</button></div>
+        <div class="q"><small>Last step</small><h3>Book your call with Mackenzie</h3><div class="days"><button class="day sel" type="button">Tue<b>28</b></button><button class="day" type="button">Wed<b>29</b></button><button class="day" type="button">Thu<b>30</b></button></div><div class="slots"><a class="slot" href="#apply">10:00</a><a class="slot" href="#apply">13:30</a><a class="slot" href="#apply">16:00</a></div></div>
+      </div>
+    </section>
+
+    <p class="foot">&copy; Mackenzie Whelan</p>
+  </main>
+
+  <div class="modal" id="optin" role="dialog" aria-modal="true" aria-label="Unlock the free training">
+    <form class="modal__card" id="optin-form" novalidate>
+      <button class="modal__x" type="button" data-close aria-label="Close">&times;</button>
+      <p class="k">Free training</p>
+      <h3>Enter your email to unlock access</h3>
+      <input type="email" placeholder="Your email address" autocomplete="email" />
+      <button class="cta" type="submit">Unlock access</button>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var m = document.getElementById("optin");
+      document.querySelectorAll("[data-optin]").forEach(function (b) { b.addEventListener("click", function () { m.classList.add("on"); }); });
+      m.addEventListener("click", function (e) { if (e.target === m || e.target.hasAttribute("data-close")) m.classList.remove("on"); });
+      document.getElementById("optin-form").addEventListener("submit", function (e) { e.preventDefault(); m.classList.remove("on"); });
+      var qs = [].slice.call(document.querySelectorAll("#qs .q")), bar = document.getElementById("bar"), i = 0;
+      function show(n) { i = Math.min(n, qs.length - 1); qs.forEach(function (q, k) { q.classList.toggle("on", k === i); }); bar.style.width = Math.round(i / (qs.length - 1) * 100) + "%"; }
+      qs.forEach(function (q) {
+        q.querySelectorAll(".opt").forEach(function (o, _, all) { o.addEventListener("click", function () { all.forEach(function (x) { x.classList.remove("sel"); }); o.classList.add("sel"); setTimeout(function () { show(i + 1); }, 250); }); });
+        var ok = q.querySelector(".ok"); if (ok) ok.addEventListener("click", function () { show(i + 1); });
+        var inp = q.querySelector("input"); if (inp) inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); show(i + 1); } });
+        q.querySelectorAll(".day").forEach(function (d, _, all) { d.addEventListener("click", function () { all.forEach(function (x) { x.classList.remove("sel"); }); d.classList.add("sel"); }); });
+      });
+    })();
+  </script>
+</body>
+</html>

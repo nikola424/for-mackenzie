@@ -369,7 +369,7 @@
 <div class="rp-sec">
   <h2 class="rp-h"><span>NOT ANOTHER SIDE HUSTLE.</span><span class="g">A PROVEN SYSTEM.</span></h2>
   <div class="rp-prog">
-    <div class="rp-phones"><img class="p1" src="../assets/img/lp/phone_icon.png" alt=""><img class="p2" src="../assets/img/lp/phone_menu_audit.png" alt=""></div>
+    <div class="rp-wins"><img class="w1" src="../assets/img/proof/sold-34k.jpg" alt="$34,000 in sales in 48 hours"><img class="w2" src="../assets/img/proof/betty.jpg" alt="Betty: $22,565 AUD in one month"><img class="w3" src="../assets/img/proof/jess-50k.jpg" alt="Jess: $50,000 in commissions"></div>
     <ul>
       <li><svg viewBox="0 0 24 24" class="rp-ck"><circle cx="12" cy="12" r="11" fill="#f3e6d8"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#a87650" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Step-by-step systems,</b> so you always know what to do next.</span></li>
       <li><svg viewBox="0 0 24 24" class="rp-ck"><circle cx="12" cy="12" r="11" fill="#f3e6d8"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#a87650" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Mentorship from day one,</b> from me and the moms already doing it.</span></li>
@@ -396,6 +396,9 @@
 .rp-h2{margin:0 0 16px;font:700 clamp(24px,3.2vw,34px)/1.2 Inter,sans-serif}
 .rp-story p{font-size:16.5px;line-height:1.6;margin:0 0 12px;color:#222}
 .rp-prog{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(18px,4vw,44px);align-items:center;text-align:left}
+.rp-wins{position:relative;height:clamp(320px,38vw,420px);max-width:380px;width:100%;margin:0 auto}
+.rp-wins img{position:absolute;top:6%;width:52%;aspect-ratio:761/1061;object-fit:cover;border-radius:14px;border:4px solid #fff;box-shadow:0 22px 40px -14px rgba(105,78,55,.4)}
+.rp-wins .w1{left:0;transform:rotate(-8deg)}.rp-wins .w2{right:0;transform:rotate(8deg)}.rp-wins .w3{left:24%;top:0;z-index:2;width:54%}
 .rp-phones{position:relative;height:clamp(300px,40vw,420px)}
 .rp-phones img{position:absolute;height:100%;width:auto;filter:drop-shadow(0 24px 30px rgba(105, 78, 55,.2))}
 .rp-phones .p1{left:0;top:0}.rp-phones .p2{right:0;top:8%;height:92%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
@@ -458,7 +461,6 @@
 .hl{position:absolute;z-index:5;width:72px;height:72px;border-radius:50%;box-shadow:0 14px 34px -14px rgba(140, 94, 62,.55);animation:hlF 6s ease-in-out infinite;pointer-events:none}
 .hl--crown{top:96px;left:calc(50% - 470px);rotate:-8deg}.hl--star{top:70px;left:calc(50% + 400px);animation-delay:-2s}.hl--shoot{top:330px;left:calc(50% + 380px);animation-delay:-4s}.hl--mic{top:360px;left:calc(50% - 450px);animation-delay:-3s}
 @keyframes hlF{50%{translate:0 -10px}}@media (max-width:900px){.hl{width:44px;height:44px}.hl--crown{top:8px;left:10px}.hl--star{top:8px;left:auto;right:10px}.hl--shoot{left:auto;right:10px;rotate:8deg}.hl--mic{left:10px}}@media (prefers-reduced-motion:reduce){.hl{animation:none}}</style>
-<img class="hl hl--crown" src="../assets/img/hl/crown.png" alt=""><img class="hl hl--star" src="../assets/img/hl/star.png" alt=""><img class="hl hl--shoot" src="../assets/img/hl/shoot.png" alt=""><img class="hl hl--mic" src="../assets/img/hl/mic.png" alt="">
 <script>
 document.addEventListener('click',function(e){var a=e.target.closest('a,[data-highlight]');if(!a||a.closest('#rp-m'))return;if(a.classList.contains('rp-slot')){e.preventDefault();document.getElementById('rp-t').innerHTML='<h3>You&rsquo;re booked!</h3><p>I&rsquo;ll send the Zoom link to your email. Talk soon.</p>';return}if(/SEE IF I QUALIFY|Show Up/i.test(a.textContent)){e.preventDefault();document.getElementById('rp-m').classList.add('on')}});
 document.getElementById('rp-form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('rp-f').style.display='none';document.getElementById('rp-t').style.display='block'});
